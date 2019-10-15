@@ -7,7 +7,7 @@ namespace Gof.Tests
     public class FactoryMethodTests
     {
         [Fact]
-        public void ParseDataShouldReturnXmlFormatWhenConnectionEstablishedWithXmlDataSource()
+        public void ParseDataShouldReturnXmlFormatWhenConnectionIsEstablishedWithXmlDataSource()
         {
             var factoryMethodDemo = new FactoryMethodDemo
             {
@@ -18,7 +18,7 @@ namespace Gof.Tests
         }
 
         [Fact]
-        public void ParseDataShouldReturnAnyIniFormatWhenConnectionEstablishedWithIniDataSource()
+        public void ParseDataShouldReturnIniFormatWhenConnectionIsEstablishedWithIniDataSource()
         {
             var factoryMethodDemo = new FactoryMethodDemo
             {
