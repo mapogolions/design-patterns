@@ -1,3 +1,5 @@
+using Gof.FactoryMethod;
+using Gof.FactoryMethod.Concrete;
 using Xunit;
 
 namespace Gof.Tests
@@ -5,9 +7,25 @@ namespace Gof.Tests
     public class FactoryMethodTests
     {
         [Fact]
-        public void ParseDataShouldReturnAnyXmlFormatWhenConnectionHasXmlFamily()
+        public void ParseDataShouldReturnXmlFormatWhenConnectionEstablishedWithXmlDataSource()
         {
-            Assert.EndsWith("o", "hello");
+            var factoryMethodDemo = new FactoryMethodDemo
+            {
+                Connection = new XmlConnection()
+            };
+            var expected = "<format>xml</format>";
+            Assert.Equal(expected, factoryMethodDemo.ParseData());
+        }
+
+        [Fact]
+        public void ParseDataShouldReturnAnyIniFormatWhenConnectionEstablishedWithIniDataSource()
+        {
+            var factoryMethodDemo = new FactoryMethodDemo
+            {
+                Connection = new IniConnection()
+            };
+            var expected = "[ini format]";
+            Assert.Equal(expected, factoryMethodDemo.ParseData());
         }
     }
 }
