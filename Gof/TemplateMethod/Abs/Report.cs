@@ -1,4 +1,3 @@
-using System.IO;
 namespace Gof.TemplateMethod.Abs
 {
     public abstract class Report
