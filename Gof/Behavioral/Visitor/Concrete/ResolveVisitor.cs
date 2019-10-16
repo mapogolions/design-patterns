@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Gof.Behavioral.Visitor.Abs;
 
@@ -10,7 +11,15 @@ namespace Gof.Behavioral.Visitor.Concrete
         public ResolveVisitor() {}
         public bool Visit(AstNode node)
         {
-            throw new System.NotImplementedException();
+            switch (node)
+            {
+                case Ref rf:
+                    return _scope.ContainsKey(rf.Name);
+                case ClassDef cls:
+                    return _scope.ContainsKey(cls.Name);
+                default:
+                    throw new ArgumentException();
+            }
         }
     }
 }
