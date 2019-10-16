@@ -1,7 +1,7 @@
 namespace Gof.Behavioral.Visitor.Abs
 {
-    public interface IVisitor
+    public interface IVisitor<T>
     {
-        string Visit(AstNode node);
+        T Visit(AstNode node);
     }
 }

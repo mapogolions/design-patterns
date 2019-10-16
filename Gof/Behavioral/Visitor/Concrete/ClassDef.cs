@@ -11,6 +11,6 @@ namespace Gof.Behavioral.Visitor.Concrete
         }
         public string Name { get; private set; }
         public string SuperClass { get; private set; }
-        public override string Accept(IVisitor visitor) => visitor.Visit(this);
+        public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
     }
 }

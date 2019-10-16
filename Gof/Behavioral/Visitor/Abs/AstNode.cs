@@ -2,6 +2,6 @@ namespace Gof.Behavioral.Visitor.Abs
 {
     public abstract class AstNode
     {
-        public abstract string Accept(IVisitor visitor);
+        public abstract T Accept<T>(IVisitor<T> visitor);
     }
 }

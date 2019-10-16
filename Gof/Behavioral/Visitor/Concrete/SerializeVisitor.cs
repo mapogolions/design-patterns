@@ -3,7 +3,7 @@ using Gof.Behavioral.Visitor.Abs;
 
 namespace Gof.Behavioral.Visitor.Concrete
 {
-    public class SerializeVisitor : IVisitor
+    public class SerializeVisitor : IVisitor<string>
     {
         public string Visit(AstNode node)
         {
