@@ -12,7 +12,7 @@ namespace Gof.Behavioral.Visitor.Concrete
                 case Arrow fn:
                     return $"val {fn.Name} : {fn.Domain} -> {fn.Codomain} = fun";
                 case ClassDef cls:
-                    return $"class {cls.Name} < {cls.SuperClass}";
+                    return cls.SuperClass is null ? cls.Name : $"{cls.Name} < {cls.SuperClass.Accept(this)}";
                 default:
                     throw new ArgumentException();
             }
