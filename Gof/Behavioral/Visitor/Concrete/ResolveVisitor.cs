@@ -13,7 +13,7 @@ namespace Gof.Behavioral.Visitor.Concrete
         {
             switch (node)
             {
-                case Ref rf:
+                case Arrow rf:
                     return _scope.ContainsKey(rf.Name);
                 case ClassDef cls:
                     return _scope.ContainsKey(cls.Name);

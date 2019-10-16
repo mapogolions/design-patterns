@@ -9,10 +9,10 @@ namespace Gof.Tests.Behavioral
         private readonly IVisitor<string> _serializer = new SerializeVisitor();
 
         [Fact]
-        public void ShouldReturnStringRepresentationOfARefAstNode()
+        public void ShouldReturnStringRepresentationOfAFunctionDefinition()
         {
-            var node = new Ref("a");
-            Assert.Equal("ref -> a", node.Accept(_serializer));
+            var node = new Arrow(name: "f", domain: "int", codomain: "unit");
+            Assert.Equal("val f : int -> unit = fun", node.Accept(_serializer));
         }
 
         [Fact]
