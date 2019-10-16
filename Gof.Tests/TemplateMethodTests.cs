@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using Gof.TemplateMethod;
-using Gof.TemplateMethod.Abs;
 using Gof.TemplateMethod.Concrete;
 using Xunit;
 
