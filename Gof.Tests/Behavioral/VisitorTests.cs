@@ -11,8 +11,8 @@ namespace Gof.Tests.Behavioral
         [Fact]
         public void ShouldReturnStringRepresentationOfAFunctionDefinition()
         {
-            var node = new Arrow(name: "f", domain: "int", codomain: "unit");
-            Assert.Equal("val f : int -> unit = fun", node.Accept(_serializer));
+            var node = new Arrow(name: "g", domain: "int", codomain: "unit");
+            Assert.Equal("val g : int -> unit = fun", node.Accept(_serializer));
         }
 
         [Fact]

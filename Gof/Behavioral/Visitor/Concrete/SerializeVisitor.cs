@@ -10,7 +10,7 @@ namespace Gof.Behavioral.Visitor.Concrete
             switch (node)
             {
                 case Arrow fn:
-                    return $"val f : {fn.Domain} -> {fn.Codomain} = fun";
+                    return $"val {fn.Name} : {fn.Domain} -> {fn.Codomain} = fun";
                 case ClassDef cls:
                     return $"class {cls.Name} < {cls.SuperClass}";
                 default:
