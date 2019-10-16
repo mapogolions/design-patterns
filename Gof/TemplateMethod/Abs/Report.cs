@@ -6,12 +6,12 @@ namespace Gof.TemplateMethod.Abs
         protected abstract string TemplateFileName { get; }
         protected virtual string ReportsDirectory => "/Reports";
         protected abstract string GenerateFileLinkUrl();
-        protected abstract bool IsValidPath(string path);
+        protected abstract bool Validation();
         protected abstract void GenerateReport();
 
         public string BuildReport()
         {
-            if (!IsValidPath(Path.Combine(ReportsDirectory, TemplateFileName)))
+            if (!Validation())
                 return string.Empty;
             GenerateReport();
             return GenerateFileLinkUrl();
