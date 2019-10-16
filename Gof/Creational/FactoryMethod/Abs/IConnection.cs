@@ -1,4 +1,4 @@
-namespace Gof.FactoryMethod.Abs
+namespace Gof.Creational.FactoryMethod.Abs
 {
     public interface IConnection
     {

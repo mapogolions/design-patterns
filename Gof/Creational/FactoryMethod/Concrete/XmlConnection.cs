@@ -1,6 +1,6 @@
-using Gof.FactoryMethod.Abs;
+using Gof.Creational.FactoryMethod.Abs;
 
-namespace Gof.FactoryMethod.Concrete
+namespace Gof.Creational.FactoryMethod.Concrete
 {
     public class XmlConnection : IConnection
     {

@@ -1,8 +1,8 @@
-using Gof.FactoryMethod.Abs;
+using Gof.Creational.FactoryMethod.Abs;
 
-namespace Gof.FactoryMethod
+namespace Gof.Creational.FactoryMethod
 {
-    public class FakeFactoryMethod
+    public class FakeClient
     {
         public IConnection Connection { get; set; }
         public string ParseData() => Connection.Connector.ParseData();

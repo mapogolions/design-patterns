@@ -1,5 +1,5 @@
-using Gof.TemplateMethod;
-using Gof.TemplateMethod.Concrete;
+using Gof.Creational.TemplateMethod;
+using Gof.Creational.TemplateMethod.Concrete;
 using Xunit;
 
 namespace Gof.Tests
@@ -9,14 +9,14 @@ namespace Gof.Tests
         [Fact]
         public void ShouldReturnLinkToBuiltLostProfitReport()
         {
-            var fake = new FakeTemplateMethod { Report = new LostProfitReport() };
+            var fake = new FakeClient { Report = new LostProfitReport() };
             Assert.Equal("/Reports/LostProfitReport.xlsx", fake.BuildReport());
         }
 
         [Fact]
         public void ShouldReturnLinkToBuiltPotentialRealProfitReport()
         {
-            var fake = new FakeTemplateMethod { Report = new PotentialRealProfitReport() };
+            var fake = new FakeClient { Report = new PotentialRealProfitReport() };
             Assert.Equal("/Reports/PotentialRealProfitReport.xlsx", fake.BuildReport());
         }
     }

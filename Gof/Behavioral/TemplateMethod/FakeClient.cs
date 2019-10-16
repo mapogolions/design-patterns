@@ -1,8 +1,8 @@
-using Gof.TemplateMethod.Abs;
+using Gof.Creational.TemplateMethod.Abs;
 
-namespace Gof.TemplateMethod
+namespace Gof.Creational.TemplateMethod
 {
-    public class FakeTemplateMethod
+    public class FakeClient
     {
         public Report Report { get; set; }
         public string BuildReport() => Report.BuildReport();

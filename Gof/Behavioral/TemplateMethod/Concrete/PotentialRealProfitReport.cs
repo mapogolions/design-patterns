@@ -1,7 +1,6 @@
-using System.IO;
-using Gof.TemplateMethod.Abs;
+using Gof.Creational.TemplateMethod.Abs;
 
-namespace Gof.TemplateMethod.Concrete
+namespace Gof.Creational.TemplateMethod.Concrete
 {
     public class PotentialRealProfitReport : Report
     {
