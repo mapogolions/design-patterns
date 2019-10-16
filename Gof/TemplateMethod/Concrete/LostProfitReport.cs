@@ -5,8 +5,7 @@ namespace Gof.TemplateMethod.Concrete
 {
     public class LostProfitReport : Report
     {
-        protected override string TemplateFileName => "LostProfit.xlsx";
-        protected override string GenerateFileLinkUrl() => Path.Combine(ReportsDirectory, TemplateFileName);
+        protected override string TemplateFileName => "LostProfitReport.xlsx";
 
         protected override bool Validation()
         {
