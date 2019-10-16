@@ -18,8 +18,8 @@ namespace Gof.Tests.Behavioral
         [Fact]
         public void ShouldReturnStringRepresentationOfAClassDefinition()
         {
-            var classHero = new ClassDef("Hero");
-            var classSuperHero = new ClassDef("SuperHero", classHero);
+            var classHero = new ClassDef(name: "Hero");
+            var classSuperHero = new ClassDef(name: "SuperHero", superClass: classHero);
             Assert.Equal("Hero < obj", classHero.Accept(_serializer));
             Assert.Equal("SuperHero < Hero < obj", classSuperHero.Accept(_serializer));
         }
