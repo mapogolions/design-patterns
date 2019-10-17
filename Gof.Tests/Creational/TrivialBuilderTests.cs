@@ -11,12 +11,12 @@ namespace Gof.Tests.Creational
         [InlineData(204, "HTTP/2.0", "No content")]
         public void ShouldReturnStatusLineWithoutHeadersAndBody(int statusCode, string protocol, string reasonPhrase)
         {
-            var pageNotFound = new HttpMessage
+            var response = new HttpMessage
                 .InternalBuilder(statusCode, protocol)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
             var expected = $"{statusCode} {protocol} {reasonPhrase}".Trim() + "\n\n";
-            Assert.Equal(expected, pageNotFound.ToString());
+            Assert.Equal(expected, response.ToString());
         }
     }
 }
