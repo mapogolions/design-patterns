@@ -31,13 +31,13 @@ namespace Gof.Creational.Builder.Trivial
         public class InternalBuilder
         {
             // required
-            public int StatusCode { get; private set; }
-            public string Protocol { get; private set; }
+            protected internal int StatusCode { get; private set; }
+            protected internal string Protocol { get; private set; }
 
             // optional
-            public readonly ISet<string> _headers = new HashSet<string>(); 
-            public string ReasonPhrase { get; private set; }
-            public string Body { get; private set; }
+            protected internal readonly ISet<string> _headers = new HashSet<string>(); 
+            protected internal string ReasonPhrase { get; private set; }
+            protected internal string Body { get; private set; }
 
             public InternalBuilder(int statusCode, string protocol)
             {

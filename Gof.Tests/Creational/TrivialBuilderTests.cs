@@ -39,8 +39,8 @@ namespace Gof.Tests.Creational
             var protocol = "1.1";
             var reasonPhrase = "Ok";
             var contentTypeHeader = "Content-Type: text/plain; charset=utf-8";
-
             var body = "Hello world";
+            
             var response = new HttpResponse
                 .InternalBuilder(statusCode, protocol)
                 .WithHeader(contentTypeHeader)
