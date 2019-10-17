@@ -21,7 +21,7 @@ namespace Gof.Creational.Builder.Trivial
 
         public override string ToString()
         {
-            var statusLine = $"{_statusCode} {_protocol} {_reasonPhrase}".TrimEnd();
+            var statusLine = $"HTTP/{_protocol} {_statusCode} {_reasonPhrase}".TrimEnd();
             var headers = "";
             foreach (var header in _headers)
                 headers += $"header\n";
