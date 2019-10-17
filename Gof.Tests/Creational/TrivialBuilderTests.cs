@@ -15,7 +15,7 @@ namespace Gof.Tests.Creational
                 .InternalBuilder(statusCode, protocol)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
-            var expected = $"HTTP/{protocol} {statusCode} {reasonPhrase}".Trim() + "\n\n";
+            var expected = $"HTTP/{protocol} {statusCode} {reasonPhrase}".TrimEnd() + "\n\n";
             Assert.Equal(expected, response.ToString());
         }
     }
