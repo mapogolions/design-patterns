@@ -11,7 +11,7 @@ namespace Gof.Tests.Creational
         [InlineData(204, "HTTP/2.0", "No content")]
         public void ShouldReturnStatusLineWithoutHeadersAndBody(int statusCode, string protocol, string reasonPhrase)
         {
-            var response = new HttpMessage
+            var response = new HttpResponse
                 .InternalBuilder(statusCode, protocol)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Gof.Creational.Builder.Trivial
 {
-    public class HttpMessage
+    public class HttpResponse
     {
         private readonly int _statusCode;
         private readonly string _reasonPhrase;
@@ -10,7 +10,7 @@ namespace Gof.Creational.Builder.Trivial
         private readonly ISet<string> _headers;
         private readonly string _body;
 
-        private HttpMessage(InternalBuilder builder)
+        private HttpResponse(InternalBuilder builder)
         {
             _statusCode = builder.StatusCode;
             _reasonPhrase = builder.ReasonPhrase;
@@ -63,7 +63,7 @@ namespace Gof.Creational.Builder.Trivial
                 return this;
             }
 
-            public HttpMessage Build() => new HttpMessage(this);
+            public HttpResponse Build() => new HttpResponse(this);
         }
     }
 }
