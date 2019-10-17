@@ -4,7 +4,8 @@ namespace Gof.Creational.FactoryMethod
 {
     public class FakeClient
     {
-        public IConnection Connection { get; set; }
-        public string ParseData() => Connection.Connector.ParseData();
+        private readonly IConnection _connection;
+        public FakeClient(IConnection connection) => _connection = connection;
+        public string ParseData() => _connection.Connector.ParseData();
     }
 }

@@ -4,7 +4,8 @@ namespace Gof.Creational.TemplateMethod
 {
     public class FakeClient
     {
-        public Report Report { get; set; }
-        public string BuildReport() => Report.BuildReport();
+        public readonly Report _report;
+        public FakeClient(Report report) => _report = report;
+        public string BuildReport() => _report.BuildReport();
     }
 }

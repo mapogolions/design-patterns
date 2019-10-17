@@ -9,7 +9,7 @@ namespace Gof.Tests
         [Fact]
         public void ParseDataShouldReturnXmlFormatWhenConnectionIsEstablishedWithXmlDataSource()
         {
-            var factoryMethodDemo = new FakeClient { Connection = new XmlConnection() };
+            var factoryMethodDemo = new FakeClient(new XmlConnection());
             var expected = "<format>xml</format>";
             Assert.Equal(expected, factoryMethodDemo.ParseData());
         }
@@ -17,7 +17,7 @@ namespace Gof.Tests
         [Fact]
         public void ParseDataShouldReturnIniFormatWhenConnectionIsEstablishedWithIniDataSource()
         {
-            var factoryMethodDemo = new FakeClient { Connection = new IniConnection() };
+            var factoryMethodDemo = new FakeClient(new IniConnection());
             var expected = "[ini format]";
             Assert.Equal(expected, factoryMethodDemo.ParseData());
         }
