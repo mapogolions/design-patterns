@@ -24,7 +24,7 @@ namespace Gof.Creational.Builder.Trivial
             var statusLine = $"HTTP/{_protocol} {_statusCode} {_reasonPhrase}".TrimEnd();
             var headers = "";
             foreach (var header in _headers)
-                headers += $"header\n";
+                headers += $"{header}\n";
             return $"{statusLine}\n{headers}\n{_body}";
         }
 
