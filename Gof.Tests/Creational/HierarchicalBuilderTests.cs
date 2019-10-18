@@ -58,7 +58,7 @@ namespace Gof.Tests.Creational
         {
             var response = new HttpResponse
                 .InternalBuilder(200)    // required
-                .WithReasonPhrase("Ok")  // list optional named arguments
+                .WithReasonPhrase("Ok")  // optional named arguments
                 .WithHeader(header)
                 .WithBody(body)
                 .Build();
