@@ -13,8 +13,11 @@ namespace Gof.Creational.Builder.Hierarchical
 
         public class InternalBuilder : MessageBuilder
         {
-            public int StatusCode { get; private set; }
-            public string ReasonPhrase { get; private set; }
+            // require for HttpResponse
+            protected internal int StatusCode { get; private set; }
+            // optional for HttpResponse
+            protected internal string ReasonPhrase { get; private set; }
+
             public InternalBuilder(int statusCode) : this(statusCode, "1.1") {}
             public InternalBuilder(int statusCode, string protocolVersion) : base(protocolVersion) =>
                 StatusCode = statusCode;

@@ -4,15 +4,15 @@ namespace Gof.Creational.Builder.Hierarchical
 {
     public abstract class HttpMessage
     {
-        public string ProtocolVersion { get; private set; }
-        public ISet<string> Headers { get; private set; }
-        public string Body { get; private set; }
+        private readonly string _protocolVersion;
+        public readonly ISet<string> _headers;
+        private readonly string _body;
 
         public HttpMessage(MessageBuilder builder)
         {
-            ProtocolVersion = builder.ProtocolVersion;
-            Headers = builder._headers;
-            Body = builder.Body;
+            _protocolVersion = builder.ProtocolVersion;
+            _headers = builder._headers;
+            _body = builder.Body;
         }
 
         public abstract class MessageBuilder
