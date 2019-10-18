@@ -4,7 +4,7 @@ namespace Gof.Creational.Builder.Hierarchical
 {
     public abstract class HttpMessage
     {
-        // protected because, need access from derived classES to build status line HTTP/protocolVersion 
+        // protected because, need access from derived classes to build status line HTTP/protocolVersion 
         protected readonly string _protocolVersion;
         private readonly ISet<string> _headers;
         private readonly string _body;

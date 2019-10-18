@@ -57,8 +57,8 @@ namespace Gof.Tests.Creational
         public void ShouldReturnResponseWithBody(string header, string body)
         {
             var response = new HttpResponse
-                .InternalBuilder(200)
-                .WithReasonPhrase("Ok")
+                .InternalBuilder(200)    // required
+                .WithReasonPhrase("Ok")  // list optional named arguments
                 .WithHeader(header)
                 .WithBody(body)
                 .Build();
