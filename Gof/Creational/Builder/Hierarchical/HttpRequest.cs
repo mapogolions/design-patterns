@@ -18,7 +18,7 @@ namespace Gof.Creational.Builder.Hierarchical
 
         public override string ToString()
         {
-            var statusLine = $"{_method} {_uri} HTTP/{_protocolVersion}".TrimEnd();
+            var statusLine = $"{_method} {_uri}{_queryString} HTTP/{_protocolVersion}".TrimEnd();
             return $"{statusLine}\n{base.ToString()}";
         }
 
