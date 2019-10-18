@@ -1,7 +1,7 @@
 using Gof.Creational.Builder.Hierarchical;
 using Xunit;
 
-namespace Gof.Tests.Creational
+namespace Gof.Tests.Creational.Builder
 {
     public class HierarchicalBuilderTests
     {
