@@ -25,7 +25,7 @@ namespace Gof.Tests.Creational
 
         [Theory]
         [InlineData(200, "Ok")]
-        [InlineData(201, "No Content")]
+        [InlineData(204, "No Content")]
         [InlineData(404, "Not Found")]
         [InlineData(302, "Redirect")]
         public void ShouldReturnStatusLineWithReasonPhrase(int statusCode, string reasonPhrase)
