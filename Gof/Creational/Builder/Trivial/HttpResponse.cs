@@ -6,7 +6,7 @@ namespace Gof.Creational.Builder.Trivial
     {
         private readonly int _statusCode;
         private readonly string _reasonPhrase;
-        private readonly string _protocol;
+        private readonly string _protocolVersion;
         private readonly ISet<string> _headers;
         private readonly string _body;
 
@@ -14,14 +14,14 @@ namespace Gof.Creational.Builder.Trivial
         {
             _statusCode = builder.StatusCode;
             _reasonPhrase = builder.ReasonPhrase;
-            _protocol = builder.Protocol;
+            _protocolVersion = builder.ProtocolVersion;
             _headers = builder._headers;
             _body = builder.Body;
         }
 
         public override string ToString()
         {
-            var statusLine = $"HTTP/{_protocol} {_statusCode} {_reasonPhrase}".TrimEnd();
+            var statusLine = $"HTTP/{_protocolVersion} {_statusCode} {_reasonPhrase}".TrimEnd();
             var headers = "";
             foreach (var header in _headers)
                 headers += $"{header}\n";
@@ -32,17 +32,17 @@ namespace Gof.Creational.Builder.Trivial
         {
             // required
             protected internal int StatusCode { get; private set; }
-            protected internal string Protocol { get; private set; }
+            protected internal string ProtocolVersion { get; private set; }
 
             // optional
             protected internal readonly ISet<string> _headers = new HashSet<string>(); 
             protected internal string ReasonPhrase { get; private set; }
             protected internal string Body { get; private set; }
 
-            public InternalBuilder(int statusCode, string protocol)
+            public InternalBuilder(int statusCode, string protocolVersion)
             {
                 StatusCode = statusCode;
-                Protocol = protocol;
+                ProtocolVersion = protocolVersion;
             }
 
             public InternalBuilder WithHeader(string header)
