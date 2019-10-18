@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Gof.Tests.Creational.Builder
 {
-    public class TrivialBuilderTests
+    public class TrivialHttpResponseTests
     { 
         [Theory]
         [InlineData(200, "1.1", "Content-type: text/plain; charset=utf-8")]

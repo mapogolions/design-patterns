@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Gof.Tests.Creational.Builder
 {
-    public class HierarchicalBuilderTests
+    public class HierarchicalHttpResponseTests
     {
         [Theory]
         [InlineData(200)]
