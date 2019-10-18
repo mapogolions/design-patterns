@@ -11,6 +11,12 @@ namespace Gof.Creational.Builder.Hierarchical
             _reasonPhrase = builder.ReasonPhrase;
         }
 
+        public override string ToString()
+        {
+            var statusLine = $"HTTP/{_protocolVersion} {_statusCode} {_reasonPhrase}".TrimEnd();
+            return $"{statusLine}\n{base.ToString()}";
+        }
+
         public class InternalBuilder : MessageBuilder
         {
             // require for HttpResponse

@@ -4,8 +4,9 @@ namespace Gof.Creational.Builder.Hierarchical
 {
     public abstract class HttpMessage
     {
-        private readonly string _protocolVersion;
-        public readonly ISet<string> _headers;
+        // protected because, need access from derived classES to build status line HTTP/protocolVersion 
+        protected readonly string _protocolVersion;
+        private readonly ISet<string> _headers;
         private readonly string _body;
 
         public HttpMessage(MessageBuilder builder)
@@ -13,6 +14,14 @@ namespace Gof.Creational.Builder.Hierarchical
             _protocolVersion = builder.ProtocolVersion;
             _headers = builder._headers;
             _body = builder.Body;
+        }
+
+        public override string ToString()
+        {
+            var tmp = "";
+            foreach (var header in _headers)
+                tmp += $"{header}\n";
+            return $"{tmp}\n{_body}";
         }
 
         public abstract class MessageBuilder
