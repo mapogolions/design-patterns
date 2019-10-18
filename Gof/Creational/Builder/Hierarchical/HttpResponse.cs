@@ -19,7 +19,7 @@ namespace Gof.Creational.Builder.Hierarchical
 
         public class InternalBuilder : MessageBuilder
         {
-            // require for HttpResponse
+            // required for HttpResponse
             protected internal int StatusCode { get; private set; }
             // optional for HttpResponse
             protected internal string ReasonPhrase { get; private set; }
