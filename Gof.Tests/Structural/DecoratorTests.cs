@@ -52,7 +52,7 @@ namespace Gof.Tests.Structural
         [Fact]
         public void LogicOrShouldThrowExceptionWhenPrimitiveIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new NoNulls<bool>(null).Value);
+            Assert.Throws<ArgumentNullException>(() => new NoNull<bool>(null).Value);
         }
     }
 }

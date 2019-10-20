@@ -1,11 +1,11 @@
 using System;
 namespace Gof.Structural.Decorator
 {
-    public class NoNulls<T> : Scalar<T>
+    public class NoNull<T> : Scalar<T>
     {
         private readonly Scalar<T> _origin;
 
-        public NoNulls(Scalar<T> origin) => _origin = origin;
+        public NoNull(Scalar<T> origin) => _origin = origin;
 
         public T Value
         {
