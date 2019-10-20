@@ -26,15 +26,15 @@ namespace Gof.Tests.Structural
         }
 
         [Fact]
-        public void LogicAndShouldReturnTrueWhenAllConditionIsTrue()
+        public void LogicAndShouldReturnTrueWhenAllConditionsIsTrue()
         {
             Assert.True(new And(new True(), new True()).Value);
         }
 
         [Fact]
-        public void LogicAndShouldReturnFalseWhenAllConditionIsFalse()
+        public void LogicAndShouldReturnFalseWhenAtLeastOneConditionIsFalse()
         {
-            Assert.True(new And(new True(), new True()).Value);
+            Assert.False(new And(new True(), new False()).Value);
         }
 
         [Fact]
