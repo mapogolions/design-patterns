@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Visitor.Abs
+namespace Gof.Behavioral.Visitor
 {
     public interface IVisitor<T>
     {

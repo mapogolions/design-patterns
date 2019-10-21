@@ -1,5 +1,4 @@
-using Gof.Behavioral.Visitor.Abs;
-using Gof.Behavioral.Visitor.Concrete;
+using Gof.Behavioral.Visitor;
 using Xunit;
 
 namespace Gof.Tests.Behavioral

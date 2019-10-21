@@ -1,7 +1,6 @@
 using System;
-using Gof.Behavioral.Visitor.Abs;
 
-namespace Gof.Behavioral.Visitor.Concrete
+namespace Gof.Behavioral.Visitor
 {
     public class SerializeVisitor : IVisitor<string>
     {

@@ -1,5 +1,4 @@
 using Gof.Creational.TemplateMethod;
-using Gof.Creational.TemplateMethod.Concrete;
 using Xunit;
 
 namespace Gof.Tests

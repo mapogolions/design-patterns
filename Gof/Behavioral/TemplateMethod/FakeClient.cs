@@ -1,5 +1,3 @@
-using Gof.Creational.TemplateMethod.Abs;
-
 namespace Gof.Creational.TemplateMethod
 {
     public class FakeClient

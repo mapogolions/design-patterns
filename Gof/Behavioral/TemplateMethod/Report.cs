@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Gof.Creational.TemplateMethod.Abs
+namespace Gof.Creational.TemplateMethod
 {
     public abstract class Report
     {
