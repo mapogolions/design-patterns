@@ -1,7 +1,7 @@
 namespace Gof.Behavioral.Observer
 {
-    public interface IObserver
+    public interface IObserver<T>
     {
-        void Update(ISubject subject);
+        void Update(T subject);
     }
 }

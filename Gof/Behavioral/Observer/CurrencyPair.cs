@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace Gof.Behavioral.Observer
 {
-    public class CurrencyPair : ISubject
+    public class CurrencyPair : ISubject<CurrencyPair>
     {
         private string _name;
-        private IList<IObserver> _orders = new List<IObserver>();
+        private IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
         public decimal CurrentPrice { get; private set; }
 
         public CurrencyPair(string name, decimal currentPrice)
@@ -14,7 +14,7 @@ namespace Gof.Behavioral.Observer
             CurrentPrice = currentPrice;
         }
 
-        public bool Attach(IObserver order)
+        public bool Attach(IObserver<CurrencyPair> order)
         {
             if (_orders.Contains(order))
                 return false;
@@ -22,7 +22,7 @@ namespace Gof.Behavioral.Observer
             return true;
         }
 
-        public bool Detach(IObserver order)
+        public bool Detach(IObserver<CurrencyPair> order)
         {
             if (!_orders.Contains(order))
                 return false;
