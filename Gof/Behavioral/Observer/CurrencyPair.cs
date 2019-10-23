@@ -6,12 +6,23 @@ namespace Gof.Behavioral.Observer
     {
         private string _name;
         private IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
-        public decimal CurrentPrice { get; private set; }
+        private decimal _currentRage;
+        public decimal CurrentRate { 
+            get
+            {
+                return _currentRage;
+            }
+            set
+            { 
+                _currentRage = value; 
+                Notify(); 
+            }
+        }
 
-        public CurrencyPair(string name, decimal currentPrice)
+        public CurrencyPair(string name, decimal currentRate)
         {
             _name = name;
-            CurrentPrice = currentPrice;
+            CurrentRate = currentRate;
         }
 
         public bool Attach(IObserver<CurrencyPair> order)
