@@ -7,15 +7,15 @@ namespace Gof.Behavioral.Observer
         private string _name;
         private IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
         private decimal _currentRate;
-        public decimal CurrentRate { 
+        public decimal CurrentRate {
             get
             {
                 return _currentRate;
             }
             set
-            { 
-                _currentRate = value; 
-                Notify(); 
+            {
+                _currentRate = value;
+                Notify();
             }
         }
 
