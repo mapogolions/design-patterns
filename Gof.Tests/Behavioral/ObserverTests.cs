@@ -6,6 +6,7 @@ namespace Gof.Tests
     public class ObserverTests
     {
         private readonly CurrencyPair _usdJpy = new CurrencyPair(name: "USD/JPY", currentRate: 108.41m);
+
         [Fact]
         public void ShouldNotifyWhenCurrentRateLessThanSupportLevel()
         {
