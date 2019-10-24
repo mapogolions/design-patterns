@@ -10,12 +10,12 @@ namespace Gof.Behavioral.ChainOfResponsibility
             return next;
         }
 
-        public abstract bool Check(string email, string password);
+        public abstract bool Check(string datum);
 
-        protected bool PassNext(string email, string password)
+        protected bool PassNext(string datum)
         {
             if (_next is null) return false;
-            return _next.Check(email, password);
+            return _next.Check(datum);
         }
     }
 }
