@@ -8,8 +8,8 @@ namespace Gof.Tests.Behavioral
         [Fact]
         public void ShouldDeclinePullRequestWhenToManyAffectedLines()
         {
-            var review = new LazyReviewer(affectedLines: 200);
-            var actual = review.Approve(new PullRequest(affectedLines: 1000, testCoverage: 100.0m, testsPassed: true));
+            var assignees = new LazyReviewer(affectedLines: 200);
+            var actual = assignees.Review(new PullRequest(affectedLines: 1000, testCoverage: 100.0m, testsPassed: true));
             Assert.Equal(ReviewResult.Declined, actual);
         }
     }

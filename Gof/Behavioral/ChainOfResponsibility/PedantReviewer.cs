@@ -6,7 +6,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
 
         public PedantReviewer(decimal testCoverage) => _testCoverage = testCoverage;
 
-        public override ReviewResult Approve(PullRequest pullRequest)
+        public override ReviewResult Review(PullRequest pullRequest)
         {
             if (pullRequest.TestCoverage < 90.0m)
                 return ReviewResult.RequestedChanges;

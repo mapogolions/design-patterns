@@ -5,7 +5,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
         private readonly int _affectedLines;
         public LazyReviewer(int affectedLines) => _affectedLines = affectedLines;
 
-        public override ReviewResult Approve(PullRequest pullRequest)
+        public override ReviewResult Review(PullRequest pullRequest)
         {
             if (pullRequest.AffectedLines > _affectedLines)
                 return ReviewResult.Declined;
