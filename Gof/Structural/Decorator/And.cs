@@ -6,7 +6,7 @@ namespace Gof.Structural.Decorator
     {
         private readonly Scalar<bool>[] _primitives;
         public And(params Scalar<bool>[] primitives) => _primitives = primitives;
-        
-        public bool Value => !_primitives.Any(it => it.Value is false);
+
+        public bool Value => _primitives.All(it => it.Value);
     }
 }
