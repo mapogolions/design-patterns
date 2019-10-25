@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 namespace Gof.Creational.Builder.Hierarchical
 {
     public class HttpRequest : HttpMessage
@@ -19,7 +18,7 @@ namespace Gof.Creational.Builder.Hierarchical
         public override string ToString()
         {
             var statusLine = $"{_method} {_uri}{_queryString} HTTP/{_protocolVersion}";
-            return $"{statusLine}\n{base.ToString()}";
+            return $"{statusLine}\r\n{base.ToString()}";
         }
 
         public class InternalBuilder : MessageBuilder

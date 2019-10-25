@@ -4,7 +4,7 @@ using Xunit;
 namespace Gof.Tests.Creational.Builder
 {
     public class TrivialHttpResponseTests
-    { 
+    {
         [Theory]
         [InlineData(200, "1.1", "Content-type: text/plain; charset=utf-8")]
         [InlineData(200, "1.1", "Cache-control: No")]
@@ -14,7 +14,7 @@ namespace Gof.Tests.Creational.Builder
                 .InternalBuilder(statusCode, protocolVersion)
                 .WithHeader(header)
                 .Build();
-            var expected = $"HTTP/{protocolVersion} {statusCode}\n{header}\n\n";
+            var expected = $"HTTP/{protocolVersion} {statusCode}\r\n{header}\r\n\r\n";
             Assert.Equal(expected, response.ToString());
         }
 
@@ -28,7 +28,7 @@ namespace Gof.Tests.Creational.Builder
                 .InternalBuilder(statusCode, protocolVersion)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
-            var expected = $"HTTP/{protocolVersion} {statusCode} {reasonPhrase}".TrimEnd() + "\n\n";
+            var expected = $"HTTP/{protocolVersion} {statusCode} {reasonPhrase}".TrimEnd() + "\r\n\r\n";
             Assert.Equal(expected, response.ToString());
         }
 
@@ -40,7 +40,7 @@ namespace Gof.Tests.Creational.Builder
             var reasonPhrase = "Ok";
             var contentTypeHeader = "Content-Type: text/plain; charset=utf-8";
             var body = "Hello world";
-            
+
             var response = new HttpResponse
                 .InternalBuilder(statusCode, protocolVersion)
                 .WithHeader(contentTypeHeader)
@@ -48,7 +48,7 @@ namespace Gof.Tests.Creational.Builder
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
 
-            var expected = $"HTTP/{protocolVersion} {statusCode} {reasonPhrase}\n{contentTypeHeader}\n\n{body}";
+            var expected = $"HTTP/{protocolVersion} {statusCode} {reasonPhrase}\r\n{contentTypeHeader}\r\n\r\n{body}";
 
             Assert.Equal(expected, response.ToString());
         }

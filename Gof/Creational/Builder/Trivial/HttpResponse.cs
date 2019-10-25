@@ -24,8 +24,8 @@ namespace Gof.Creational.Builder.Trivial
             var statusLine = $"HTTP/{_protocolVersion} {_statusCode} {_reasonPhrase}".TrimEnd();
             var headers = "";
             foreach (var header in _headers)
-                headers += $"{header}\n";
-            return $"{statusLine}\n{headers}\n{_body}";
+                headers += $"{header}\r\n";
+            return $"{statusLine}\r\n{headers}\r\n{_body}";
         }
 
         public class InternalBuilder
@@ -35,7 +35,7 @@ namespace Gof.Creational.Builder.Trivial
             protected internal string ProtocolVersion { get; private set; }
 
             // optional
-            protected internal readonly ISet<string> _headers = new HashSet<string>(); 
+            protected internal readonly ISet<string> _headers = new HashSet<string>();
             protected internal string ReasonPhrase { get; private set; }
             protected internal string Body { get; private set; }
 

@@ -11,7 +11,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnStatusLineWithStatusCodeAndDefaultProtocolVersion(int statusCode)
         {
             var response = new HttpResponse.InternalBuilder(statusCode).Build();
-            Assert.Equal($"HTTP/1.1 {statusCode}\n\n", response.ToString());
+            Assert.Equal($"HTTP/1.1 {statusCode}\r\n\r\n", response.ToString());
         }
 
         [Theory]
@@ -20,7 +20,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnStatusLineWithSpecifiedStatusCodeAndProtocolVersion(int statusCode, string protocolVersion)
         {
             var response = new HttpResponse.InternalBuilder(statusCode, protocolVersion).Build();
-            Assert.Equal($"HTTP/{protocolVersion} {statusCode}\n\n", response.ToString());
+            Assert.Equal($"HTTP/{protocolVersion} {statusCode}\r\n\r\n", response.ToString());
         }
 
         [Theory]
@@ -34,7 +34,7 @@ namespace Gof.Tests.Creational.Builder
                 .InternalBuilder(statusCode)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
-            var expected = $"HTTP/1.1 {statusCode} {reasonPhrase}\n\n";
+            var expected = $"HTTP/1.1 {statusCode} {reasonPhrase}\r\n\r\n";
             Assert.Equal(expected, response.ToString());
         }
 
@@ -47,7 +47,7 @@ namespace Gof.Tests.Creational.Builder
                 .InternalBuilder(200)
                 .WithHeader(header)
                 .Build();
-            var expected = $"HTTP/1.1 200\n{header}\n\n";
+            var expected = $"HTTP/1.1 200\r\n{header}\r\n\r\n";
             Assert.Equal(expected, response.ToString());
         }
 
@@ -62,7 +62,7 @@ namespace Gof.Tests.Creational.Builder
                 .WithHeader(header)
                 .WithBody(body)
                 .Build();
-            var expected = $"HTTP/1.1 200 Ok\n{header}\n\n{body}";
+            var expected = $"HTTP/1.1 200 Ok\r\n{header}\r\n\r\n{body}";
             Assert.Equal(expected, response.ToString());
         }
     }

@@ -20,8 +20,8 @@ namespace Gof.Creational.Builder.Hierarchical
         {
             var tmp = "";
             foreach (var header in _headers)
-                tmp += $"{header}\n";
-            return $"{tmp}\n{_body}";
+                tmp += $"{header}\r\n";
+            return $"{tmp}\r\n{_body}";
         }
 
         public abstract class MessageBuilder

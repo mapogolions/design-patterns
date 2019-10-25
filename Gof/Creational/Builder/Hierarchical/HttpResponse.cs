@@ -14,7 +14,7 @@ namespace Gof.Creational.Builder.Hierarchical
         public override string ToString()
         {
             var statusLine = $"HTTP/{_protocolVersion} {_statusCode} {_reasonPhrase}".TrimEnd();
-            return $"{statusLine}\n{base.ToString()}";
+            return $"{statusLine}\r\n{base.ToString()}";
         }
 
         public class InternalBuilder : MessageBuilder

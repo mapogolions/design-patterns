@@ -11,7 +11,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnStatusLineWithDefaultProtocolVersion(string method, string uri)
         {
             var request = new HttpRequest.InternalBuilder(method, uri).Build();
-            var expected = $"{method} {uri} HTTP/1.1\n\n";
+            var expected = $"{method} {uri} HTTP/1.1\r\n\r\n";
             Assert.Equal(expected, request.ToString());
         }
 
@@ -21,7 +21,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldProvideAllRequiredParametersForHttpRequest(string method, string uri, string protocolVersion)
         {
             var request = new HttpRequest.InternalBuilder(method, uri, protocolVersion).Build();
-            var expected = $"{method} {uri} HTTP/{protocolVersion}\n\n";
+            var expected = $"{method} {uri} HTTP/{protocolVersion}\r\n\r\n";
             Assert.Equal(expected, request.ToString());
         }
 
@@ -35,8 +35,8 @@ namespace Gof.Tests.Creational.Builder
                 .InternalBuilder(method, uri)
                 .WithQueryString(queryString)
                 .Build();
-            
-            var expected = $"{method} {uri}{queryString} HTTP/1.1\n\n";
+
+            var expected = $"{method} {uri}{queryString} HTTP/1.1\r\n\r\n";
             Assert.Equal(expected, request.ToString());
         }
     }
