@@ -8,7 +8,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
 
         public override ReviewResult Review(PullRequest pullRequest)
         {
-            if (pullRequest.TestCoverage < 90.0m)
+            if (pullRequest.TestCoverage < _testCoverage)
                 return ReviewResult.RequestedChanges;
             if (pullRequest.UnitTestsPassed is false)
                 return ReviewResult.Declined;
