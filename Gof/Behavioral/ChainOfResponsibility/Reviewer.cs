@@ -3,6 +3,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
     public abstract class Reviewer
     {
         private Reviewer _next;
+
         public abstract ReviewResult Review(PullRequest pullRequest);
 
         protected ReviewResult PassNext(PullRequest pullRequest)
@@ -12,6 +13,6 @@ namespace Gof.Behavioral.ChainOfResponsibility
             return _next.Review(pullRequest);
         }
 
-        public void Assignee(Reviewer next) => _next = next;
+        public void With(Reviewer next) => _next = next;
     }
 }
