@@ -2,7 +2,7 @@
 
 #### Status: in progress
 
-**Creational**:
+**Creational**
 - [x] Factory method
 - [x] Builder
 
