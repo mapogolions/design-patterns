@@ -8,6 +8,7 @@
 
 **Structural**
 - [x] Decorator
+- [x] Bridge
 
 **Behavioral**
 - [x] Template method
