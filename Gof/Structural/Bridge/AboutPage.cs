@@ -4,6 +4,6 @@ namespace Gof.Structural.Bridge
     {
         public AboutPage(ITheme theme) : base(theme) {}
 
-        public override string Render() => $"About page has {_theme.BackgroundColor} color";
+        public override string Render() => $"About page has a {_theme.BackgroundColor} theme";
     }
 }
