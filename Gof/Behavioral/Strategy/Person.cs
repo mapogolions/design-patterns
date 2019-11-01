@@ -1,6 +1,6 @@
 namespace Gof.Behavioral.Strategy
 {
-    public class Person
+    public class Person : IEntity
     {
         public readonly string _firstName;
         public readonly string _lastName;
@@ -10,5 +10,8 @@ namespace Gof.Behavioral.Strategy
             _firstName = firstName;
             _lastName = lastName;
         }
+
+        public string FirstName => _firstName;
+        public string LastName => _lastName;
     }
 }
