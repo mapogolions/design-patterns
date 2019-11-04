@@ -15,5 +15,13 @@ namespace Gof.Tests
             var context = new Context(notation: new SnakeCaseNotation());
             Assert.Equal(expected, context.Convert(name));
         }
+
+        [Theory]
+        [InlineData("user name", "UserName")]
+        public void ShouldConvertToCamelCaseNotation(string name, string expected)
+        {
+            var context = new Context(notation: new CamelCaseNotation());
+            Assert.Equal(expected, context.Convert(name));
+        }
     }
 }

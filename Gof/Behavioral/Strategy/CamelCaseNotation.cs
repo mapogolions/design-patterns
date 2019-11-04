@@ -9,7 +9,8 @@ namespace Gof.Behavioral.Strategy
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException();
             var parts = name.Split(' ');
-            return string.Join(string.Empty, parts.Select(it => it.ToUpper()));
+            return string.Join(string.Empty,
+                parts.Select(it => it.First().ToString().ToUpper() + it.Substring(1)));
         }
     }
 }
