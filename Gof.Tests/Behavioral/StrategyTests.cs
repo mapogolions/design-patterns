@@ -18,9 +18,21 @@ namespace Gof.Tests
 
         [Theory]
         [InlineData("user name", "UserName")]
+        [InlineData("identity", "Identity")]
+        [InlineData("potential real profit", "PotentialRealProfit")]
         public void ShouldConvertToCamelCaseNotation(string name, string expected)
         {
-            var context = new Context(notation: new CamelCaseNotation());
+            var context = new Context(notation: new PascalCaseNotation());
+            Assert.Equal(expected, context.Convert(name));
+        }
+
+        [Theory]
+        [InlineData("user name", "user-name")]
+        [InlineData("identity", "identity")]
+        [InlineData("potential real profit", "potential-real-profit")]
+        public void ShouldConvertToHyphenNotation(string name, string expected)
+        {
+            var context = new Context(notation: new HyphenNotation());
             Assert.Equal(expected, context.Convert(name));
         }
     }

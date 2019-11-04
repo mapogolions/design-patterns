@@ -2,7 +2,7 @@ using System.Linq;
 using System;
 namespace Gof.Behavioral.Strategy
 {
-    public class CamelCaseNotation : INotation
+    public class PascalCaseNotation : INotation
     {
         public string Convert(string name)
         {
