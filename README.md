@@ -15,3 +15,4 @@
 - [x] Visitor
 - [X] Observer
 - [x] Chain of responsibility
+- [x] Strategy
