@@ -1,48 +1,48 @@
-using System.Collections.Generic;
-
 namespace Gof.Creational.Builder.Trivial
 {
     public class NutritionFacts
     {
         // required
-        private readonly int _servingSize;
         private readonly int _servings;
+        private readonly int _servingSize;
         // optional
         private readonly int _calories;
-        private readonly int _fat;
+        private readonly int _fats;
 
-        private NutritionFacts(InternalBuilder builder)
+        private NutritionFacts(Ctor builder)
         {
             _servings = builder.Servings;
             _servingSize = builder.ServingSize;
             _calories = builder.Calories;
-            _fat = builder.Fat;
+            _fats = builder.Fats;
         }
 
-        public class InternalBuilder
+        public string Dump => $"{_servings}|{_servingSize}|{_calories}|{_fats}";
+
+        public class Ctor
         {
             // required
             protected internal int Servings { get; private set; }
             protected internal int ServingSize { get; private set; }
             // optional
             protected internal int Calories { get; private set; }
-            protected internal int Fat { get; private set; }
+            protected internal int Fats { get; private set; }
 
-            public InternalBuilder(int servings, int servingSize)
+            public Ctor(int servings, int servingSize)
             {
                 Servings = servings;
                 ServingSize = servingSize;
             }
 
-            public InternalBuilder WithCalories(int calories)
+            public Ctor WithCalories(int calories)
             {
                 Calories = calories;
                 return this;
             }
 
-            public InternalBuilder WithFat(int fat)
+            public Ctor WithFats(int fats)
             {
-                Fat = fat;
+                Fats = fats;
                 return this;
             }
 
