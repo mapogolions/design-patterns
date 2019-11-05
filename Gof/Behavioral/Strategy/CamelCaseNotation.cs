@@ -5,13 +5,13 @@ namespace Gof.Behavioral.Strategy
 {
     public class CamelCaseNotation : INotation
     {
-        public string Convert(string name)
+        public string Convert(string identifier)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentException();
-            var parts = name.Split(' ');
+            var parts = identifier.Split(' ');
             if (parts.Length is 1)
-                return name;
+                return identifier;
             var pascalCase = new PascalCaseNotation();
             return $"{parts[0]}{pascalCase.Convert(string.Join(" ", parts.Skip(1)))}";
         }

@@ -3,11 +3,11 @@ namespace Gof.Behavioral.Strategy
 {
     public class SnakeCaseNotation : INotation
     {
-        public string Convert(string name)
+        public string Convert(string identifier)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentException();
-            return name.Replace(oldChar: ' ', newChar: '_');
+            return identifier.Replace(oldChar: ' ', newChar: '_');
         }
     }
 }

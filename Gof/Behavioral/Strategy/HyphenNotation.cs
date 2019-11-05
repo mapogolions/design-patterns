@@ -3,11 +3,11 @@ namespace Gof.Behavioral.Strategy
 {
     public class HyphenNotation : INotation
     {
-        public string Convert(string name)
+        public string Convert(string identifier)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentException();
-            return name.Replace(oldChar: ' ', newChar: '-');
+            return identifier.Replace(oldChar: ' ', newChar: '-');
         }
     }
 }

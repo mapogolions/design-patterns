@@ -9,30 +9,30 @@ namespace Gof.Tests
         [InlineData("user name", "user_name")]
         [InlineData("identity", "identity")]
         [InlineData("potential real profit", "potential_real_profit")]
-        public void ShouldConvertToSnakeCaseNotation(string name, string expected)
+        public void ShouldConvertToSnakeCaseNotation(string identifier, string expected)
         {
             var context = new Context(notation: new SnakeCaseNotation());
-            Assert.Equal(expected, context.Convert(name));
+            Assert.Equal(expected, context.Convert(identifier));
         }
 
         [Theory]
         [InlineData("user name", "UserName")]
         [InlineData("identity", "Identity")]
         [InlineData("potential real profit", "PotentialRealProfit")]
-        public void ShouldConvertToPascalCaseNotation(string name, string expected)
+        public void ShouldConvertToPascalCaseNotation(string identifier, string expected)
         {
             var context = new Context(notation: new PascalCaseNotation());
-            Assert.Equal(expected, context.Convert(name));
+            Assert.Equal(expected, context.Convert(identifier));
         }
 
         [Theory]
         [InlineData("user name", "user-name")]
         [InlineData("identity", "identity")]
         [InlineData("potential real profit", "potential-real-profit")]
-        public void ShouldConvertToHyphenNotation(string name, string expected)
+        public void ShouldConvertToHyphenNotation(string identifier, string expected)
         {
             var context = new Context(notation: new HyphenNotation());
-            Assert.Equal(expected, context.Convert(name));
+            Assert.Equal(expected, context.Convert(identifier));
         }
 
 
@@ -40,10 +40,10 @@ namespace Gof.Tests
         [InlineData("user name", "userName")]
         [InlineData("identity", "identity")]
         [InlineData("potential real profit", "potentialRealProfit")]
-        public void ShouldConvertToCamelCaseNotation(string name, string expected)
+        public void ShouldConvertToCamelCaseNotation(string identifier, string expected)
         {
             var context = new Context(notation: new CamelCaseNotation());
-            Assert.Equal(expected, context.Convert(name));
+            Assert.Equal(expected, context.Convert(identifier));
         }
     }
 }
