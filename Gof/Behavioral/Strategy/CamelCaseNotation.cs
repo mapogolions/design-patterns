@@ -13,7 +13,7 @@ namespace Gof.Behavioral.Strategy
             if (parts.Length is 1)
                 return name;
             var pascalCase = new PascalCaseNotation();
-            return pascalCase.Convert(string.Join(" ", parts.Skip(1)));
+            return $"{parts[0]}{pascalCase.Convert(string.Join(" ", parts.Skip(1)))}";
         }
     }
 }
