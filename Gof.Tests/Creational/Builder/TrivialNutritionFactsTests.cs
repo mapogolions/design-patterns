@@ -20,7 +20,7 @@ namespace Gof.Tests.Creational.Builder
         [Theory]
         [InlineData(2, 30, 1200)]
         [InlineData(2, 40, 1200)]
-        public void ShoudReturnNutritionFactsWithColories(int servings, int servingSize, int calories)
+        public void ShoudReturnNutritionFactsWithCalories(int servings, int servingSize, int calories)
         {
             var nutritionFacts = new NutritionFacts
                 .Ctor(servings, servingSize)
