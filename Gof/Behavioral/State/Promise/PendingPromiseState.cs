@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.State
+namespace Gof.Behavioral.State.Promise
 {
     internal class PendingPromiseState<T> : IPromiseState<T>
     {

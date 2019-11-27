@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.State
+namespace Gof.Behavioral.State.Promise
 {
     internal class FulfilledPromiseState<T> : IPromiseState<T>
     {

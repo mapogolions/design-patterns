@@ -1,4 +1,4 @@
-using Gof.Behavioral.State;
+using Gof.Behavioral.State.Promise;
 using Xunit;
 
 namespace Gof.Tests.Behavioral

@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.State
+namespace Gof.Behavioral.State.Promise
 {
     public class Promise<T>
     {
