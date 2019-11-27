@@ -8,11 +8,8 @@ namespace Gof.Behavioral.State
 
         public Promise<T> Reject(string error)
         {
-            if (_promise.State is PendingPromiseState<T>)
-            {
-                _promise.Reason = error;
-                _promise.State = new RejectedPromiseState<T>(_promise);
-            }
+            _promise.Reason = error;
+            _promise.State = new RejectedPromiseState<T>(_promise);
             return _promise;
         }
 
