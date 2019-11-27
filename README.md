@@ -16,3 +16,5 @@
 - [X] Observer
 - [x] Chain of responsibility
 - [x] Strategy
+- [] Memento
+- [x] State
