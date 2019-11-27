@@ -10,7 +10,7 @@ namespace Gof.Behavioral.State
     {
         internal IPromiseState<T> State { get; set; }
         public T ResolvedValue { get; internal set; }
-        public string Error { get; internal set; }
+        public string Reason { get; internal set; }
 
         public Promise()
         {
@@ -19,6 +19,9 @@ namespace Gof.Behavioral.State
 
         public Promise<T> Resolve(T value) => State.Resolve(value);
         public Promise<T> Reject(string error) => State.Reject(error);
+
+        public static Promise<TValue> Resolve<TValue>(TValue value) => new Promise<TValue>().Resolve(value);
+        public static Promise<TValue> Reject<TValue>(string reason) => new Promise<TValue>().Reject(reason);
     }
 
     internal class PendingPromiseState<T> : IPromiseState<T>
@@ -31,7 +34,7 @@ namespace Gof.Behavioral.State
         {
             if (_promise.State is PendingPromiseState<T>)
             {
-                _promise.Error = error;
+                _promise.Reason = error;
                 _promise.State = new RejectedPromiseState<T>(_promise);
             }
             return _promise;
