@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Gof.Tests.Behavioral
 {
-    public class StateTests
+    public class StatePromiseTests
     {
         [Fact]
         public void PromiseCanOnlyBeFulfilledOnce()
