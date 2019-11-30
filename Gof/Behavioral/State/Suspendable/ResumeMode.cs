@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Gof.Behavioral.State.Suspendable
@@ -15,7 +14,7 @@ namespace Gof.Behavioral.State.Suspendable
             if (enumerator.MoveNext())
                 return enumerator.Current;
             _generator.Mode = _generator.ExhaustedMode;
-            return _generator.Yield();
+            return _generator.Yield;
         }
     }
 }

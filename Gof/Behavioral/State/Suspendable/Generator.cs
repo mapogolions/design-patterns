@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Gof.Behavioral.State.Suspendable
@@ -15,12 +16,15 @@ namespace Gof.Behavioral.State.Suspendable
             _enumerator = new List<T>(items).GetEnumerator();
             SuspendMode = new SuspendMode<T>(this);
             ResumeMode = new ResumeMode<T>(this);
+            ExhaustedMode = new ExhaustedMode<T>(this);
             Mode = SuspendMode;
         }
 
-        public void Suspend() => Mode.Resume();
+        public Generator() : this(Array.Empty<T>()) { }
+
+        public void Suspend() => Mode.Suspend();
         public void Resume() => Mode.Resume();
 
-        public T Yield() => Mode.Yield(_enumerator);
+        public T Yield => Mode.Yield(_enumerator);
     }
 }
