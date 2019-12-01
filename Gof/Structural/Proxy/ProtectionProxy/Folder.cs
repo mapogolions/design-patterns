@@ -14,13 +14,8 @@ namespace Gof.Structural.Proxy.ProtectionProxy
             return true;
         }
 
-        public bool Delete(string fileName)
-        {
-            if (!_files.Contains(fileName))
-                return false;
-            _files.Remove(fileName);
-            return true;
-        }
+        public bool Delete(string fileName) => _files.Remove(fileName);
+
 
         public bool Rename(string oldName, string newName)
         {
