@@ -34,7 +34,7 @@ namespace Gof.Tests.Behavioral
         }
 
         [Fact]
-        public void PullRequstShouldBeDeclinedByLazyReviewer()
+        public void PullRequestShouldBeDeclinedByLazyReviewer()
         {
             var pullRequest = new PullRequest(affectedLines: 1000, testCoverage: 100.0m, testsPassed: true);
             var assignees = new PedantReviewer(testCoverage: 90.0m);
