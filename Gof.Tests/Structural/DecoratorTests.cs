@@ -1,5 +1,5 @@
 using System;
-using Gof.Structural.Decorator;
+using Gof.Structural.Decorator.Scalar;
 using Xunit;
 
 namespace Gof.Tests.Structural
