@@ -10,9 +10,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
         {
             if (pullRequest.TestCoverage < _testCoverage)
                 return ReviewResult.RequestedChanges;
-            if (pullRequest.UnitTestsPassed is false)
-                return ReviewResult.Declined;
-            return PassNext(pullRequest);
+            return pullRequest.UnitTestsPassed ? PassNext(pullRequest) : ReviewResult.Declined;
         }
     }
 }

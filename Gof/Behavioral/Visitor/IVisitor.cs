@@ -1,6 +1,6 @@
 namespace Gof.Behavioral.Visitor
 {
-    public interface IVisitor<T>
+    public interface IVisitor<out T>
     {
         T Visit(AstNode node);
     }

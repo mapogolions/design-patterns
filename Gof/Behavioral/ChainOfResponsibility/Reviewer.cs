@@ -8,9 +8,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
 
         protected ReviewResult PassNext(PullRequest pullRequest)
         {
-            if (_next is null)
-                return ReviewResult.Approved; // pull request is approved by default
-            return _next.Review(pullRequest);
+            return _next?.Review(pullRequest) ?? ReviewResult.Approved;
         }
 
         public void With(Reviewer next) => _next = next;

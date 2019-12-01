@@ -10,8 +10,8 @@ namespace Gof.Behavioral.Visitor
 
         public ClassDef(string name) : this(name, new ClassDef("obj", null)) {}
 
-        public string Name { get; private set; }
-        public ClassDef SuperClass { get; private set; }
+        public string Name { get; }
+        public ClassDef SuperClass { get; }
         public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
     }
 }

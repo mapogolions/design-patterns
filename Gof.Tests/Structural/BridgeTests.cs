@@ -14,7 +14,7 @@ namespace Gof.Tests.Structural
         }
 
         [Fact]
-        public void ShouldRenderContatsPageWithDarkTheme()
+        public void ShouldRenderContactsPageWithDarkTheme()
         {
             var page = new ContactsPage(new DarkTheme());
             Assert.Equal("Contacts page has a Dark theme", page.Render());

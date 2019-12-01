@@ -8,9 +8,7 @@ namespace Gof.Behavioral.ChainOfResponsibility
 
         public override ReviewResult Review(PullRequest pullRequest)
         {
-            if (pullRequest.AffectedLines > _affectedLines)
-                return ReviewResult.Declined;
-            return PassNext(pullRequest);
+            return pullRequest.AffectedLines > _affectedLines ? ReviewResult.Declined : PassNext(pullRequest);
         }
     }
 }

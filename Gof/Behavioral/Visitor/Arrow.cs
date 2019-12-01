@@ -8,9 +8,9 @@ namespace Gof.Behavioral.Visitor
             Domain = domain;
             Codomain = codomain;
         }
-        public string Name { get; private set; }
-        public string Domain { get; private set; }
-        public string Codomain { get; private set; }
+        public string Name { get; }
+        public string Domain { get; }
+        public string Codomain { get; }
         public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
     }
 }
