@@ -31,7 +31,7 @@ namespace Gof.Tests.Behavioral
         }
 
         [Fact]
-        public void ShouldRetunAllAvailableValues()
+        public void ShouldReturnAllAvailableValues()
         {
             var generator = new Generator<char>('a', 'b');
             generator.Resume();
