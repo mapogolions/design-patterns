@@ -9,6 +9,7 @@
 **Structural**
 - [x] Decorator
 - [x] Bridge
+- [x] Proxy
 
 **Behavioral**
 - [x] Template method
