@@ -1,32 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-
 namespace Gof.Structural.Decorator.Manipula
 {
-    public class TakeEnumerator<T> : IEnumerable<T>
+    public class AppendEnumerable<T> : IEnumerable<T>
     {
+        private readonly T _item;
         private readonly IEnumerable<T> _origin;
-        private readonly int _count;
 
-        public TakeEnumerator(IEnumerable<T> origin, int count)
+        public AppendEnumerable(IEnumerable<T> origin, T item)
         {
             _origin = origin;
-            _count = count;
+            _item = item;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            var index = 0;
             foreach (var item in _origin)
             {
-                if (++index > _count) break;
                 yield return item;
             }
+            yield return _item;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new System.NotImplementedException();
         }
     }
 }

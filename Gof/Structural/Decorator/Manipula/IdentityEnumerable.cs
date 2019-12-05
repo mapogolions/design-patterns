@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Gof.Structural.Decorator.Manipula
 {
-    public class IdentityEnumerator<T> : IEnumerable<T>
+    public class IdentityEnumerable<T> : IEnumerable<T>
     {
         private readonly IEnumerable<T> _origin;
 
-        public IdentityEnumerator(IEnumerable<T> origin) => _origin = origin;
+        public IdentityEnumerable(IEnumerable<T> origin) => _origin = origin;
 
         public IEnumerator<T> GetEnumerator()
         {

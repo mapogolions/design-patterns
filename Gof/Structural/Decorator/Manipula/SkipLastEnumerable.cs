@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Gof.Structural.Decorator.Manipula
 {
-    public class SkipLastEnumerator<T> : IEnumerable<T>
+    public class SkipLastEnumerable<T> : IEnumerable<T>
     {
         private readonly IEnumerable<T> _origin;
         private readonly int _count;
 
-        public SkipLastEnumerator(IEnumerable<T> origin, int count)
+        public SkipLastEnumerable(IEnumerable<T> origin, int count)
         {
             _origin = origin;
             _count = count;
