@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Gof.Tests.Structural
 {
-    public class DecoratorTests
+    public class DecoratorScalarTests
     {
         [Fact]
         public void ShouldReturnTruePrimitive()
