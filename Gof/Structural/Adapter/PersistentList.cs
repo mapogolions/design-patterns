@@ -6,11 +6,11 @@ namespace Gof.Structural.Adapter
         {
             Cons<T> iter(Cons<T> tail, int index)
             {
-                if (index >= items.Length)
+                if (index <= 0)
                     return tail;
-                return iter(new Cons<T>(items[index], tail), ++index);
+                return iter(new Cons<T>(items[index - 1], tail), --index);
             }
-            return iter(null, 0);
+            return iter(null, items.Length);
         }
     }
 }
