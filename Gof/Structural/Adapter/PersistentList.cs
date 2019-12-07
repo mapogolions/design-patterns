@@ -6,13 +6,13 @@ namespace Gof.Structural.Adapter
     {
         public static Cons<T> Of<T>(params T[] items)
         {
-            Cons<T> loop(Cons<T> tail, int index)
+            Cons<T> iter(Cons<T> tail, int index)
             {
                 if (index >= items.Length)
                     return tail;
-                return new Cons<T>(items[index], tail);
+                return iter(new Cons<T>(items[index], tail), ++index);
             }
-            return loop(null, 0);
+            return iter(null, 0);
         }
 
         public class Cons<T> : Iterable<T>
