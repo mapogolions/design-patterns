@@ -21,11 +21,11 @@ namespace Gof.Tests.Structural
         public void DotNetEnumeratorShouldYieldAllItems()
         {
             var enumerator = new IterableAdapter<int>(PersistentList.Of<int>(5, 6)).GetEnumerator();
-            enumerator.MoveNext();
+            Assert.True(enumerator.MoveNext());
             Assert.Equal(5, enumerator.Current);
-            enumerator.MoveNext();
+            Assert.True(enumerator.MoveNext());
             Assert.Equal(6, enumerator.Current);
-            enumerator.MoveNext();
+            Assert.False(enumerator.MoveNext());
             Assert.Equal(6, enumerator.Current);
         }
 
