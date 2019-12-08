@@ -25,12 +25,12 @@ namespace Gof.Structural.Adapter
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //
         }
     }
 }

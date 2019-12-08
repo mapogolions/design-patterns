@@ -8,6 +8,37 @@ namespace Gof.Tests.Structural
     {
         // Test adapter pattern
         [Fact]
+        public void JdkIterableProtocolShouldBeCompatibleWithForEach()
+        {
+            var iterable = PersistentList.Of<bool>(true, true);
+            foreach (var item in new IterableAdapter<bool>(iterable))
+            {
+                Assert.True(item);
+            }
+        }
+
+        [Fact]
+        public void DotNetEnumeratorShouldYieldAllItems()
+        {
+            var enumerator = new IterableAdapter<int>(PersistentList.Of<int>(5, 6)).GetEnumerator();
+            enumerator.MoveNext();
+            Assert.Equal(5, enumerator.Current);
+            enumerator.MoveNext();
+            Assert.Equal(6, enumerator.Current);
+            enumerator.MoveNext();
+            Assert.Equal(6, enumerator.Current);
+        }
+
+        [Fact]
+        public void JdkIteratorShouldYieldAllItems()
+        {
+            var iterator = PersistentList.Of<int>(5, 6).Iterator();
+            Assert.Equal(5, iterator.Next());
+            Assert.Equal(6, iterator.Next());
+            Assert.Throws<IndexOutOfRangeException>(() => iterator.Next());
+        }
+
+        [Fact]
         public void DotNetEnumeratorShouldReturnDefaultValueOfTypeWhenCollectionIsEmpty()
         {
             var enumerator = new IterableAdapter<bool>(PersistentList.Of<bool>()).GetEnumerator();

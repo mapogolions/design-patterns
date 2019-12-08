@@ -45,7 +45,7 @@ namespace Gof.Structural.Adapter
 
         public ConsIterator(Cons<T> origin) => _origin = origin;
 
-        public bool HasNext() => _origin is Cons<T> _;
+        public bool HasNext() => !(_origin is Nil<T> _);
 
         public T Next()
         {
