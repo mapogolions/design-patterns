@@ -10,7 +10,7 @@ namespace Gof.Structural.Adapter
                     return tail;
                 return iter(new Cons<T>(items[index - 1], tail), --index);
             }
-            return iter(null, items.Length);
+            return iter(Nil.New<T>(), items.Length);
         }
     }
 }
