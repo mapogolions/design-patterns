@@ -76,11 +76,11 @@ namespace Gof.Tests.Structural
 
         // Test infrastructure
         [Fact]
-        public void ShouldThrowInvalidOperationException()
+        public void ShouldThrowInvalidOperationExceptionWhenCollectionIsEqualNil()
         {
-            var items = PersistentList.Of<int>();
-            Assert.Throws<InvalidOperationException>(() => items.Head);
-            Assert.Throws<InvalidOperationException>(() => items.Tail);
+            var nil = PersistentList.Of<int>();
+            Assert.Throws<InvalidOperationException>(() => nil.Head);
+            Assert.Throws<InvalidOperationException>(() => nil.Tail);
         }
 
         [Fact]
@@ -90,19 +90,8 @@ namespace Gof.Tests.Structural
             Assert.Equal(Nil.New<string>(), PersistentList.Of<string>());
         }
 
-
         [Fact]
-        public void ShouldCreatePersistentList()
-        {
-            var items = PersistentList.Of<int>(1, 2, 3);
-            Assert.Equal(1, items.Head);
-            Assert.Equal(2, items.Tail.Head);
-            Assert.Equal(3, items.Tail.Tail.Head);
-            Assert.IsType<Nil<int>>(items.Tail.Tail.Tail);
-        }
-
-        [Fact]
-        public void ShouldCreatePersistentLinkedListWithTwoElements()
+        public void ShouldCreatePersistentListWithTwoElements()
         {
             var items = new Cons<int>(8, new Cons<int>(6, Nil.New<int>()));
             Assert.Equal(8, items.Head);
@@ -111,7 +100,7 @@ namespace Gof.Tests.Structural
         }
 
         [Fact]
-        public void ShouldCreatePersistentLinkedListWithOneElement()
+        public void ShouldCreatePersistentListWithOneElement()
         {
             var items = new Cons<int>(6, Nil.New<int>());
             Assert.Equal(6, items.Head);
