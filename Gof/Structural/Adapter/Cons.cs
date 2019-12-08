@@ -17,7 +17,7 @@ namespace Gof.Structural.Adapter
         public virtual Iterator<T> Iterator() => new ConsIterator<T>(this);
     }
 
-    public class Nil
+    public static class Nil
     {
         public static Nil<T> New<T>() => Nil<T>.GetInstance();
     }
