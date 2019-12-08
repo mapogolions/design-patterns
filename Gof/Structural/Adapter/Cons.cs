@@ -14,7 +14,7 @@ namespace Gof.Structural.Adapter
             Tail = tail;
         }
 
-        public virtual Iterator<T> Iterator() => new ConsIterator<T>(this);
+        public Iterator<T> Iterator() => new ConsIterator<T>(this);
     }
 
     public static class Nil
