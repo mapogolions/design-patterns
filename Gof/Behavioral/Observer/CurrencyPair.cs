@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Gof.Behavioral.Observer
 {
-    public class CurrencyPair : ISubject<CurrencyPair>
+    public class CurrencyPair : IObservable<CurrencyPair>
     {
         private readonly string _name;
         private readonly IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
