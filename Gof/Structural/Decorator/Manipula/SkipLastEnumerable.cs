@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Gof.Structural.Decorator.Manipula
 {
-    public class SkipLastEnumerable<T> : IEnumerable<T>
+    public class SkipLastEnumerable<T> : BaseEnumerable<T>
     {
         private readonly IEnumerable<T> _origin;
         private readonly int _count;
@@ -14,7 +14,7 @@ namespace Gof.Structural.Decorator.Manipula
             _count = count;
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public override IEnumerator<T> GetEnumerator()
         {
             if (_count <= 0)
             {
@@ -30,11 +30,6 @@ namespace Gof.Structural.Decorator.Manipula
                     queue.Enqueue(item);
                 }
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Gof.Structural.Decorator.Manipula
 {
-    public class TakeEnumerable<T> : IEnumerable<T>
+    public class TakeEnumerable<T> : BaseEnumerable<T>
     {
         private readonly IEnumerable<T> _origin;
         private readonly int _count;
@@ -14,7 +14,7 @@ namespace Gof.Structural.Decorator.Manipula
             _count = count;
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public override IEnumerator<T> GetEnumerator()
         {
             var index = 0;
             foreach (var item in _origin)
@@ -22,11 +22,6 @@ namespace Gof.Structural.Decorator.Manipula
                 if (++index > _count) break;
                 yield return item;
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
