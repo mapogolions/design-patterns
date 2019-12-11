@@ -10,6 +10,7 @@
 - [x] Decorator
 - [x] Bridge
 - [x] Proxy
+- [x] Adapter
 
 **Behavioral**
 - [x] Template method
