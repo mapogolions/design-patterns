@@ -1,5 +1,7 @@
 ### Design Patterns
 
+[![Build Status](https://travis-ci.org/mapogolions/DesignPatterns.svg?branch=master)](https://travis-ci.org/mapogolions/DesignPatterns)
+
 #### Status: in progress
 
 **Creational**
@@ -18,5 +20,4 @@
 - [X] Observer
 - [x] Chain of responsibility
 - [x] Strategy
-- [ ] Memento
 - [x] State
