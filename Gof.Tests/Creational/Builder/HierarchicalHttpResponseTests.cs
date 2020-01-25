@@ -10,7 +10,7 @@ namespace Gof.Tests.Creational.Builder
         [InlineData(302)]
         public void ShouldReturnStatusLineWithStatusCodeAndDefaultProtocolVersion(int statusCode)
         {
-            var response = new HttpResponse.InternalBuilder(statusCode).Build();
+            var response = new HttpResponse.Builder(statusCode).Build();
             Assert.Equal($"HTTP/1.1 {statusCode}\r\n\r\n", response.ToString());
         }
 
@@ -19,7 +19,7 @@ namespace Gof.Tests.Creational.Builder
         [InlineData(302, "1.0")]
         public void ShouldReturnStatusLineWithSpecifiedStatusCodeAndProtocolVersion(int statusCode, string protocolVersion)
         {
-            var response = new HttpResponse.InternalBuilder(statusCode, protocolVersion).Build();
+            var response = new HttpResponse.Builder(statusCode, protocolVersion).Build();
             Assert.Equal($"HTTP/{protocolVersion} {statusCode}\r\n\r\n", response.ToString());
         }
 
@@ -31,7 +31,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnStatusLineWithReasonPhrase(int statusCode, string reasonPhrase)
         {
             var response = new HttpResponse
-                .InternalBuilder(statusCode)
+                .Builder(statusCode)
                 .WithReasonPhrase(reasonPhrase)
                 .Build();
             var expected = $"HTTP/1.1 {statusCode} {reasonPhrase}\r\n\r\n";
@@ -44,7 +44,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnResponseWithStatusLineAndSomeHeader(string header)
         {
             var response = new HttpResponse
-                .InternalBuilder(200)
+                .Builder(200)
                 .WithHeader(header)
                 .Build();
             var expected = $"HTTP/1.1 200\r\n{header}\r\n\r\n";
@@ -57,7 +57,7 @@ namespace Gof.Tests.Creational.Builder
         public void ShouldReturnResponseWithBody(string header, string body)
         {
             var response = new HttpResponse
-                .InternalBuilder(200)    // required
+                .Builder(200)    // required
                 .WithReasonPhrase("Ok")  // optional named arguments
                 .WithHeader(header)
                 .WithBody(body)

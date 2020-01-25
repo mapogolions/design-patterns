@@ -9,7 +9,7 @@ namespace Gof.Creational.Builder.Hierarchical
         private readonly ISet<string> _headers;
         private readonly string _body;
 
-        public HttpMessage(MessageBuilder builder)
+        internal HttpMessage(MessageBuilder builder)
         {
             _protocolVersion = builder.ProtocolVersion;
             _headers = builder._headers;

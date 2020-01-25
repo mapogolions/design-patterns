@@ -8,7 +8,7 @@ namespace Gof.Creational.Builder.Hierarchical
         // optional
         private readonly string _queryString;
 
-        private HttpRequest(InternalBuilder builder) : base(builder)
+        private HttpRequest(Builder builder) : base(builder)
         {
             _method = builder.Method;
             _uri = builder.Uri;
@@ -21,7 +21,7 @@ namespace Gof.Creational.Builder.Hierarchical
             return $"{statusLine}\r\n{base.ToString()}";
         }
 
-        public class InternalBuilder : MessageBuilder
+        public class Builder : MessageBuilder
         {
             // required
             protected internal string Method { get; private set; }
@@ -29,16 +29,16 @@ namespace Gof.Creational.Builder.Hierarchical
             // optional
             protected internal string QueryString { get; private set; }
 
-            public InternalBuilder(string method, string uri) : this(method, uri, "1.1") {}
+            public Builder(string method, string uri) : this(method, uri, "1.1") {}
 
-            public InternalBuilder(string method, string uri, string protocolVersion) : base(protocolVersion)
+            public Builder(string method, string uri, string protocolVersion) : base(protocolVersion)
             {
                 Method = method;
                 Uri = uri;
                 QueryString = default;
             }
 
-            public InternalBuilder WithQueryString(string queryString)
+            public Builder WithQueryString(string queryString)
             {
                 QueryString = queryString;
                 return this;

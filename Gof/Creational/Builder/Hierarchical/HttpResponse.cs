@@ -5,7 +5,7 @@ namespace Gof.Creational.Builder.Hierarchical
         private readonly int _statusCode;
         private readonly string _reasonPhrase;
 
-        private HttpResponse(InternalBuilder builder) : base(builder)
+        private HttpResponse(Builder builder) : base(builder)
         {
             _statusCode = builder.StatusCode;
             _reasonPhrase = builder.ReasonPhrase;
@@ -17,18 +17,18 @@ namespace Gof.Creational.Builder.Hierarchical
             return $"{statusLine}\r\n{base.ToString()}";
         }
 
-        public class InternalBuilder : MessageBuilder
+        public class Builder : MessageBuilder
         {
             // required
             protected internal int StatusCode { get; private set; }
             // optional
             protected internal string ReasonPhrase { get; private set; }
 
-            public InternalBuilder(int statusCode) : this(statusCode, "1.1") {}
-            public InternalBuilder(int statusCode, string protocolVersion) : base(protocolVersion) =>
+            public Builder(int statusCode) : this(statusCode, "1.1") {}
+            public Builder(int statusCode, string protocolVersion) : base(protocolVersion) =>
                 StatusCode = statusCode;
 
-            public InternalBuilder WithReasonPhrase(string reasonPhrase)
+            public Builder WithReasonPhrase(string reasonPhrase)
             {
                 ReasonPhrase = reasonPhrase;
                 return this;
