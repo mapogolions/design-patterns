@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Gof.Structural.Decorator.Manipula
@@ -9,9 +8,6 @@ namespace Gof.Structural.Decorator.Manipula
 
         public IdentityEnumerable(IEnumerable<T> origin) => _origin = origin;
 
-        public override IEnumerator<T> GetEnumerator()
-        {
-            return _origin.GetEnumerator();
-        }
+        public override IEnumerator<T> GetEnumerator() => _origin.GetEnumerator();
     }
 }
