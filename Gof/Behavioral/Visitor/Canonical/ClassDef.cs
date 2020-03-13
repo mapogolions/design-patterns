@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Visitor
+namespace Gof.Behavioral.Visitor.Canonical
 {
     public class ClassDef : AstNode
     {
@@ -12,6 +12,6 @@ namespace Gof.Behavioral.Visitor
 
         public string Name { get; }
         public ClassDef SuperClass { get; }
-        public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
+        public override string Stringify(ISerializer serializer) => serializer.Serialize(this);
     }
 }
