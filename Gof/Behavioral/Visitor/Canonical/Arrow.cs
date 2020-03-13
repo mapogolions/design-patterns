@@ -11,6 +11,6 @@ namespace Gof.Behavioral.Visitor.Canonical
         public string Name { get; }
         public string Domain { get; }
         public string Codomain { get; }
-        public override string Stringify(ISerializer serializer) => serializer.Serialize(this);
+        public override string Accept(ISerializer serializer) => serializer.Visit(this);
     }
 }
