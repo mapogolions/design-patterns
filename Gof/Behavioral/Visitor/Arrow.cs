@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Visitor.Canonical
+namespace Gof.Behavioral.Visitor
 {
     public class Arrow : AstNode
     {
@@ -11,6 +11,6 @@ namespace Gof.Behavioral.Visitor.Canonical
         public string Name { get; }
         public string Domain { get; }
         public string Codomain { get; }
-        public override string Accept(ISerializer serializer) => serializer.Visit(this);
+        public override string Stringify(ISerializer serializer) => serializer.Serialize(this);
     }
 }
