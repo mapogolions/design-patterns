@@ -13,7 +13,7 @@ namespace Gof.Behavioral.State.Suspendable
             SuspendedState = new SuspendedState<T>(this);
             ResumedState = new ResumedState<T>(this);
             ExhaustedState = new ExhaustedState<T>(this);
-            CurrentState = SuspendedState;
+            CurrentState = ResumedState;
         }
 
         public Generator() : this(Array.Empty<T>()) { }
