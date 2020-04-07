@@ -5,25 +5,26 @@ namespace Gof.Behavioral.State.Suspendable
 {
     public class Generator<T>
     {
-        private readonly IEnumerator<T> _enumerator;
-        internal ISuspendableMode<T> Mode { get; set; }
-        internal ISuspendableMode<T> Suspended { get; set; }
-        internal ISuspendableMode<T> Resumed { get; set; }
-        internal ISuspendableMode<T> Exhausted { get; set; }
+        private readonly IEnumerator<T> _items;
 
         public Generator(params T[] items)
         {
-            _enumerator = new List<T>(items).GetEnumerator();
-            Suspended = new Suspened<T>(this);
-            Resumed = new Resumed<T>(this);
-            Exhausted = new Exhausted<T>(this);
-            Mode = Suspended;
+            _items = new List<T>(items).GetEnumerator();
+            SuspendedState = new SuspendedState<T>(this);
+            ResumedState = new ResumedState<T>(this);
+            ExhaustedState = new ExhaustedState<T>(this);
+            CurrentState = SuspendedState;
         }
 
         public Generator() : this(Array.Empty<T>()) { }
 
-        public void Suspend() => Mode.Suspend();
-        public void Resume() => Mode.Resume();
-        public T Yield => Mode.Yield(_enumerator);
+        internal GeneratorState<T> CurrentState { get; set; }
+        internal SuspendedState<T> SuspendedState { get; }
+        internal ResumedState<T> ResumedState { get; }
+        internal ExhaustedState<T> ExhaustedState { get; }
+
+        public void Suspend() => CurrentState.Suspend();
+        public void Resume() => CurrentState.Resume();
+        public T Yield => CurrentState.Yield(_items);
     }
 }
