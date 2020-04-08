@@ -29,6 +29,7 @@ namespace Gof.Behavioral.Observer
             if (_orders.Contains(order))
                 return false;
             _orders.Add(order);
+            order.Update(this);
             return true;
         }
 
