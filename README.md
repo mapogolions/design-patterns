@@ -1,6 +1,6 @@
 ### Design Patterns
 
-[![Build Status](https://travis-ci.org/mapogolions/DesignPatterns.svg?branch=master)](https://travis-ci.org/mapogolions/DesignPatterns)
+[![Build Status](https://travis-ci.org/mapogolions/design-patterns.svg?branch=master)](https://travis-ci.org/mapogolions/design-patterns)
 
 #### Status: in progress
 
