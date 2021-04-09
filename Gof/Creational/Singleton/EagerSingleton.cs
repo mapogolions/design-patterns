@@ -2,7 +2,7 @@
 {
     public class EagerSingleton
     {
-        private static readonly EagerSingleton _instance;
+        private static readonly EagerSingleton _instance = new EagerSingleton();
 
         private EagerSingleton() { }
 
