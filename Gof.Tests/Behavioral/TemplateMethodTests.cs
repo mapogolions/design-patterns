@@ -8,7 +8,7 @@ namespace Gof.Tests
     public class TemplateMethodTests
     {
         [Fact]
-        public void StartAsyncRetunResult()
+        public void ShouldReturnExecutingTask()
         {
             var backgroundJob = new CompletedAtStartTimeJob();
             var executingTask = backgroundJob.RunAsync(new());
