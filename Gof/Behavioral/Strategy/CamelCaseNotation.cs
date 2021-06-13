@@ -1,19 +1,13 @@
-using System.Linq;
-using System;
-
 namespace Gof.Behavioral.Strategy
 {
     public class CamelCaseNotation : INotation
     {
+        private readonly PascalCaseNotation _pascalCaseNotation = new();
+
         public string Convert(string identifier)
         {
-            if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentException();
-            var parts = identifier.Split(' ');
-            if (parts.Length is 1)
-                return identifier;
-            var pascalCase = new PascalCaseNotation();
-            return $"{parts[0]}{pascalCase.Convert(string.Join(" ", parts.Skip(1)))}";
+            var pascalCaseIdentifier = _pascalCaseNotation.Convert(identifier);
+            return $"{char.ToLower(pascalCaseIdentifier[0])}{pascalCaseIdentifier.Substring(1)}";
         }
     }
 }

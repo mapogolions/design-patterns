@@ -1,5 +1,6 @@
-using System.Linq;
 using System;
+using System.Linq;
+
 namespace Gof.Behavioral.Strategy
 {
     public class PascalCaseNotation : INotation
@@ -7,10 +8,11 @@ namespace Gof.Behavioral.Strategy
         public string Convert(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
+            {
                 throw new ArgumentException();
-            var parts = identifier.Split(' ');
-            return string.Join(string.Empty,
-                parts.Select(it => it.First().ToString().ToUpper() + it.Substring(1)));
+            }
+            var parts = identifier.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            return string.Join("", parts.Select(x => $"{char.ToUpper(x[0])}{x.Substring(1)}"));
         }
     }
 }
