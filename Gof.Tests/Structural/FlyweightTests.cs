@@ -20,6 +20,7 @@ namespace Gof.Tests.Structural
             var mediatr = new Mediatr(services);
 
             Assert.Equal(expected, mediatr.Send(request));
+            Assert.Equal(expected, mediatr.SendOptimized(request));
         }
 
         private static ServiceProvider MockServices<TReq, TRes>(IRequestHandler<TReq, TRes> handler) where TReq : IRequest<TRes>
