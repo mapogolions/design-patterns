@@ -1,4 +1,4 @@
-namespace Gof.Structural.Flyweight.JBogardMediatr
+namespace Gof.Structural.Flyweight.JBogardMediatr.Internal
 {
     internal abstract class RequestHandlerBase
     {
