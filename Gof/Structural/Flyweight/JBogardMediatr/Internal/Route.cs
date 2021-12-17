@@ -8,7 +8,7 @@ namespace Gof.Structural.Flyweight.JBogardMediatr.Internal
         public Route(object request)
         {
             _request = request;
-            _endpoint = RequestEndpointsFactory.Create<TRes>(request.GetType());
+            _endpoint = RequestEndpointsFactory.Match<TRes>(request.GetType());
         }
 
         public TRes Invoke(ServiceProvider services) => (TRes)_endpoint.Act(_request, services);

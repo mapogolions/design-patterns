@@ -21,8 +21,8 @@ namespace Gof.Structural.Flyweight.JBogardMediatr
         public TRes SendOptimized<TRes>(IRequest<TRes> request)
         {
             var requestType = request.GetType();
-            var handler = RequestEndpointsFactory.Create<TRes>(requestType);
-            return (TRes)handler.Act(request, _services);
+            var endpoint = RequestEndpointsFactory.Match<TRes>(requestType);
+            return (TRes)endpoint.Act(request, _services);
         }
     }
 }

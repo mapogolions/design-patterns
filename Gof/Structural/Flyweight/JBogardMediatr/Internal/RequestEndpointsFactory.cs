@@ -7,7 +7,7 @@ namespace Gof.Structural.Flyweight.JBogardMediatr.Internal
     {
         private static readonly ConcurrentDictionary<Type, UntypedRequestEndpoint> _endpoints = new();
 
-        public static UntypedRequestEndpoint Create<TRes>(Type requestType) =>
+        public static UntypedRequestEndpoint Match<TRes>(Type requestType) =>
             _endpoints.GetOrAdd(requestType,
                 static t => (UntypedRequestEndpoint)(Activator.CreateInstance(typeof(TypedRequestEndpoint<,>)
                 .MakeGenericType(t, typeof(TRes))) ?? throw new InvalidOperationException()));
