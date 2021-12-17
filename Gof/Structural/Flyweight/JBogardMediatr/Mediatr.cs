@@ -22,7 +22,7 @@ namespace Gof.Structural.Flyweight.JBogardMediatr
         {
             var requestType = request.GetType();
             var handler = RequestEndpointsFactory.Create<TRes>(requestType);
-            return (TRes) handler.Act(request, _services);
+            return (TRes)handler.Act(request, _services);
         }
     }
 }
