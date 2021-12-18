@@ -14,8 +14,8 @@ namespace Gof.Structural.Flyweight.JBogardMediatr
         public TRes Send<TRes>(IRequest<TRes> request)
         {
             var requestType = request.GetType();
-            var route = new Route<TRes>(request);
-            return route.Invoke(_services);
+            var matchedRequest = new MatchedRequest<TRes>(request, _services);
+            return matchedRequest.Respose();
         }
 
         public TRes SendOptimized<TRes>(IRequest<TRes> request)
