@@ -1,16 +1,16 @@
 namespace Gof.Structural.Flyweight.JBogardMediatr.Internal
 {
-    internal abstract class UntypedRequestEndpoint
+    internal abstract class UntypedEndpoint
     {
         public abstract object Act(object request, ServiceProvider services);
     }
 
-    internal class TypedRequestEndpoint<TReq, TRes> : UntypedRequestEndpoint
+    internal class TypedEndpoint<TReq, TRes> : UntypedEndpoint
         where TReq : IRequest<TRes>
     {
         public override object Act(object request, ServiceProvider services)
         {
-            var endpoint = (IRequestEndpoint<TReq, TRes>) services(typeof(IRequestEndpoint<TReq, TRes>));
+            var endpoint = (IEndpoint<TReq, TRes>) services(typeof(IEndpoint<TReq, TRes>));
             return endpoint.Act((TReq) request);
         }
     }

@@ -23,7 +23,7 @@ namespace Gof.Tests.Structural
             Assert.Equal(expected, mediatr.SendOptimized(request));
         }
 
-        private static ServiceProvider MockServices<TReq, TRes>(IRequestEndpoint<TReq, TRes> handler) where TReq : IRequest<TRes>
+        private static ServiceProvider MockServices<TReq, TRes>(IEndpoint<TReq, TRes> handler) where TReq : IRequest<TRes>
             => type => type.IsAssignableFrom(handler.GetType()) ? handler : throw new InvalidOperationException();
     }
 
@@ -36,7 +36,7 @@ namespace Gof.Tests.Structural
         Declined
     }
 
-    public class ReviewPullRequest : IRequestEndpoint<PullRequest, ReviewResult>
+    public class ReviewPullRequest : IEndpoint<PullRequest, ReviewResult>
     {
         private readonly int _affectedLines;
         private readonly decimal _testCoverage;

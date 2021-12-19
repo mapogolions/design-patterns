@@ -14,14 +14,14 @@ namespace Gof.Structural.Flyweight.JBogardMediatr
         public TRes Send<TRes>(IRequest<TRes> request)
         {
             var requestType = request.GetType();
-            var matchedRequest = new MatchedRequest<TRes>(request, _services);
-            return matchedRequest.Respose();
+            var matching = new Matching<TRes>(request, _services);
+            return matching.Invoke();
         }
 
         public TRes SendOptimized<TRes>(IRequest<TRes> request)
         {
             var requestType = request.GetType();
-            var endpoint = RequestEndpointsFactory.Match<TRes>(requestType);
+            var endpoint = EndpointsFactory.Match<TRes>(requestType);
             return (TRes)endpoint.Act(request, _services);
         }
     }
