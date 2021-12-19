@@ -9,6 +9,7 @@
 - [x] Bridge
 - [x] Adapter
 - [x] Proxy
+- [x] Flyweight
 
 **Behavioral**
 - [x] Template method

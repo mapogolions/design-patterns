@@ -1,4 +1,4 @@
 namespace Gof.Structural.Flyweight.JBogardMediatr
 {
-    public interface IRequest<TRes> { }
+    public interface IRequest<out TRes> { }
 }
