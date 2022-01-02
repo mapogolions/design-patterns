@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Gof.Structural.Adapter.JvmIterable;
 using Xunit;
 
