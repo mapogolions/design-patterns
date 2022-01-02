@@ -1,4 +1,4 @@
-namespace Gof.Structural.Adapter
+namespace Gof.Structural.Adapter.JvmIterable
 {
     public interface Iterator<T>
     {
