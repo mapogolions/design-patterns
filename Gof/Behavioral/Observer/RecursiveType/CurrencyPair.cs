@@ -2,11 +2,19 @@ using System.Collections.Generic;
 
 namespace Gof.Behavioral.Observer.RecursiveType
 {
-    public class CurrencyPair : IObservable<CurrencyPair>
+
+    public class CurrencyPair : ICurrencyPair, IObservable<CurrencyPair>
     {
-        private readonly string _name;
         private readonly IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
         private decimal _currentRate;
+
+        public CurrencyPair(string name, decimal currentRate)
+        {
+            Name = name;
+            CurrentRate = currentRate;
+        }
+
+        public string Name { get; }
 
         public decimal CurrentRate
         {
@@ -18,16 +26,9 @@ namespace Gof.Behavioral.Observer.RecursiveType
             }
         }
 
-        public CurrencyPair(string name, decimal currentRate)
-        {
-            _name = name;
-            CurrentRate = currentRate;
-        }
-
         public bool Attach(IObserver<CurrencyPair> order)
         {
-            if (_orders.Contains(order))
-                return false;
+            if (_orders.Contains(order)) return false;
             _orders.Add(order);
             order.Update(this);
             return true;
@@ -41,7 +42,9 @@ namespace Gof.Behavioral.Observer.RecursiveType
         public void Notify()
         {
             foreach (var order in _orders)
+            {
                 order.Update(this);
+            }
         }
     }
 }
