@@ -48,5 +48,15 @@ namespace Gof.Tests.Behavioral.Observer.RecursiveType
             usdJpy.CurrentRate = 110.04m;
             Assert.True(buyOrder.CanBuy);
         }
+
+        [Fact]
+        public void ShouldAttachOrderOnlyOnce()
+        {
+            var usdJpy = new CurrencyPair(name: "USD/JPY", currentRate: 108.41m);
+            var buyOrder = new BuyOrder(resistanceLevel: 114m);
+
+            Assert.True(usdJpy.Attach(buyOrder));
+            Assert.False(usdJpy.Attach(buyOrder));
+        }
     }
 }
