@@ -1,18 +1,16 @@
 using Gof.Behavioral.Observer.RecursiveType;
 using Xunit;
 
-namespace Gof.Tests
+namespace Gof.Tests.Behavioral.Observer.RecursiveType
 {
-    public class ObserverRecursiveTypeTests
+    public class ObserverTests
     {
         [Fact]
         public void BuyOrderShouldBeNotifiedAtTheTimeOfAttachment()
         {
             var usdJpy = new CurrencyPair(name: "USD/JPY", currentRate: 108.41m);
             var sellOrder = new BuyOrder(resistanceLevel: 108m);
-
             usdJpy.Attach(sellOrder);
-
             Assert.True(sellOrder.CanBuy);
         }
 
@@ -21,9 +19,7 @@ namespace Gof.Tests
         {
             var usdJpy = new CurrencyPair(name: "USD/JPY", currentRate: 108.41m);
             var sellOrder = new SellOrder(supportLevel: 109m);
-
             usdJpy.Attach(sellOrder);
-
             Assert.True(sellOrder.CanSell);
         }
 

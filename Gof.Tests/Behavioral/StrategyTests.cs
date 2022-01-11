@@ -1,7 +1,7 @@
 using Gof.Behavioral.Strategy;
 using Xunit;
 
-namespace Gof.Tests
+namespace Gof.Tests.Behavioral
 {
     public class StrategyTests
     {

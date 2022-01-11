@@ -3,7 +3,7 @@ using Xunit;
 using Gof.Behavioral.TemplateMethod;
 using System;
 
-namespace Gof.Tests
+namespace Gof.Tests.Behavioral
 {
     public class TemplateMethodTests
     {
