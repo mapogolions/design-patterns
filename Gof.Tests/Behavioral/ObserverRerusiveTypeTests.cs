@@ -1,9 +1,9 @@
-using Gof.Behavioral.Observer;
+using Gof.Behavioral.Observer.RecursiveType;
 using Xunit;
 
 namespace Gof.Tests
 {
-    public class ObserverTests
+    public class ObserverRecursiveTypeTests
     {
         [Fact]
         public void BuyOrderShouldBeNotifiedAtTheTimeOfAttachment()

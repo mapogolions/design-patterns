@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Observer
+namespace Gof.Behavioral.Observer.RecursiveType
 {
     public class BuyOrder : IObserver<CurrencyPair>
     {

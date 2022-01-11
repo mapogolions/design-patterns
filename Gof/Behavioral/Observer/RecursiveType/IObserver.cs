@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Observer
+namespace Gof.Behavioral.Observer.RecursiveType
 {
     public interface IObserver<T> where T : IObservable<T>
     {

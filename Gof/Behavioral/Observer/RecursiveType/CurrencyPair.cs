@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Gof.Behavioral.Observer
+namespace Gof.Behavioral.Observer.RecursiveType
 {
     public class CurrencyPair : IObservable<CurrencyPair>
     {
