@@ -2,7 +2,7 @@ using System;
 
 namespace Gof.Behavioral.Observer.Builtin
 {
-    public class BuyOrder : System.IObserver<ICurrencyPair>
+    public class BuyOrder : System.IObserver<CurrencyPair>
     {
         private readonly decimal _level;
 
@@ -15,6 +15,6 @@ namespace Gof.Behavioral.Observer.Builtin
 
         public void OnCompleted() => throw new NotImplementedException();
         public void OnError(Exception error) => throw new NotImplementedException();
-        public void OnNext(ICurrencyPair value) => CanBuy = value.CurrentRate > _level;
+        public void OnNext(CurrencyPair value) => CanBuy = value.CurrentRate > _level;
     }
 }

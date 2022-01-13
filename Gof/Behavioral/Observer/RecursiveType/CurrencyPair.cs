@@ -2,8 +2,7 @@ using System.Collections.Generic;
 
 namespace Gof.Behavioral.Observer.RecursiveType
 {
-
-    public class CurrencyPair : ICurrencyPair, IObservable<CurrencyPair>
+    public class CurrencyPair : IObservable<CurrencyPair>
     {
         private readonly IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
         private decimal _currentRate;

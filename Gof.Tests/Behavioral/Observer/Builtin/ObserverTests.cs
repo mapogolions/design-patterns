@@ -8,7 +8,7 @@ namespace Gof.Tests.Behavioral.Observer.Builtin
         [Fact]
         public void BuyOrderShouldBeNotifiedAtTheTimeOfAttachment()
         {
-            var usdJpy = new ObservableCurrencyPair(new CurrencyPair("USD/JPY", 108.41m));
+            var usdJpy = new CurrencyPair("USD/JPY", 108.41m);
             var sellOrder = new BuyOrder(108m);
             usdJpy.Subscribe(sellOrder);
             Assert.True(sellOrder.CanBuy);
@@ -17,7 +17,7 @@ namespace Gof.Tests.Behavioral.Observer.Builtin
         [Fact]
         public void SellOrderShouldBeNotifiedAtTheTimeOfAttachment()
         {
-            var usdJpy = new ObservableCurrencyPair(new CurrencyPair("USD/JPY", 108.41m));
+            var usdJpy = new CurrencyPair("USD/JPY", 108.41m);
             var sellOrder = new SellOrder(109m);
             usdJpy.Subscribe(sellOrder);
             Assert.True(sellOrder.CanSell);
@@ -26,7 +26,7 @@ namespace Gof.Tests.Behavioral.Observer.Builtin
         [Fact]
         public void ShouldNotifyWhenCurrentRateLessThanSupportLevel()
         {
-            var usdJpy = new ObservableCurrencyPair(new CurrencyPair("USD/JPY", 108.41m));
+            var usdJpy = new CurrencyPair("USD/JPY", 108.41m);
             var sellOrder = new SellOrder(107.00m);
 
             usdJpy.Subscribe(sellOrder);
@@ -39,7 +39,7 @@ namespace Gof.Tests.Behavioral.Observer.Builtin
         [Fact]
         public void ShouldNotifyWhenCurrentRateGreaterThanResistanceLevel()
         {
-            var usdJpy = new ObservableCurrencyPair(new CurrencyPair("USD/JPY", 108.41m));
+            var usdJpy = new CurrencyPair("USD/JPY", 108.41m);
             var buyOrder = new BuyOrder(109.50m);
 
             usdJpy.Subscribe(buyOrder);
@@ -47,6 +47,16 @@ namespace Gof.Tests.Behavioral.Observer.Builtin
 
             usdJpy.CurrentRate = 110.04m;
             Assert.True(buyOrder.CanBuy);
+        }
+
+        [Fact]
+        public void ShouldAttachOrderOnlyOnce()
+        {
+            var usdJpy = new CurrencyPair("USD/JPY", 108.41m);
+            var buyOrder = new BuyOrder(114m);
+
+            Assert.Same(usdJpy, usdJpy.Subscribe(buyOrder));
+            Assert.NotSame(usdJpy, usdJpy.Subscribe(buyOrder));
         }
     }
 }
