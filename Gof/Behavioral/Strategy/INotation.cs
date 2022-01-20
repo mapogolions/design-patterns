@@ -2,6 +2,6 @@ namespace Gof.Behavioral.Strategy
 {
     public interface INotation
     {
-         string Convert(string identifier);
+         string Convert(string name);
     }
 }

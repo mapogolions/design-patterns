@@ -4,10 +4,10 @@ namespace Gof.Behavioral.Strategy
     {
         private readonly PascalCaseNotation _pascalCaseNotation = new();
 
-        public string Convert(string identifier)
+        public string Convert(string name)
         {
-            var pascalCaseIdentifier = _pascalCaseNotation.Convert(identifier);
-            return $"{char.ToLower(pascalCaseIdentifier[0])}{pascalCaseIdentifier.Substring(1)}";
+            var pascalCase = _pascalCaseNotation.Convert(name);
+            return $"{char.ToLower(pascalCase[0])}{pascalCase.Substring(1)}";
         }
     }
 }

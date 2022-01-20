@@ -6,6 +6,6 @@ namespace Gof.Behavioral.Strategy
 
         public Context(INotation notation) => _notation = notation;
 
-        public string Convert(string identifier) => _notation.Convert(identifier);
+        public string Convert(string name) => _notation.Convert(name);
     }
 }

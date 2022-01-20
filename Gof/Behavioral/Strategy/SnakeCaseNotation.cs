@@ -4,13 +4,13 @@ namespace Gof.Behavioral.Strategy
 {
     public class SnakeCaseNotation : INotation
     {
-        public string Convert(string identifier)
+        public string Convert(string name)
         {
-            if (string.IsNullOrEmpty(identifier))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentException();
             }
-            return identifier.Replace(oldChar: ' ', newChar: '_');
+            return name.Replace(oldChar: ' ', newChar: '_');
         }
     }
 }
