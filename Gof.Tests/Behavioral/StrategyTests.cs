@@ -6,9 +6,9 @@ namespace Gof.Tests.Behavioral
     public class StrategyTests
     {
         [Theory]
-        [InlineData("user name", "user_name")]
-        [InlineData("identity", "identity")]
-        [InlineData("potential real profit", "potential_real_profit")]
+        [InlineData("token", "token")]
+        [InlineData("cancellation token", "cancellation_token")]
+        [InlineData("cancellation token source", "cancellation_token_source")]
         public void ShouldConvertToSnakeCaseNotation(string name, string expected)
         {
             var context = new Context(new SnakeCaseNotation());
@@ -16,9 +16,9 @@ namespace Gof.Tests.Behavioral
         }
 
         [Theory]
-        [InlineData("user name", "UserName")]
-        [InlineData("identity", "Identity")]
-        [InlineData("potential real profit", "PotentialRealProfit")]
+        [InlineData("token", "Token")]
+        [InlineData("cancellation token", "CancellationToken")]
+        [InlineData("cancellation token source", "CancellationTokenSource")]
         public void ShouldConvertToPascalCaseNotation(string name, string expected)
         {
             var context = new Context(new PascalCaseNotation());
@@ -26,9 +26,9 @@ namespace Gof.Tests.Behavioral
         }
 
         [Theory]
-        [InlineData("user name", "user-name")]
-        [InlineData("identity", "identity")]
-        [InlineData("potential real profit", "potential-real-profit")]
+        [InlineData("token", "token")]
+        [InlineData("cancellation token", "cancellation-token")]
+        [InlineData("cancellation token source", "cancellation-token-source")]
         public void ShouldConvertToHyphenNotation(string name, string expected)
         {
             var context = new Context(new HyphenNotation());
@@ -37,9 +37,9 @@ namespace Gof.Tests.Behavioral
 
 
         [Theory]
-        [InlineData("user name", "userName")]
-        [InlineData("identity", "identity")]
-        [InlineData("potential real profit", "potentialRealProfit")]
+        [InlineData("token", "token")]
+        [InlineData("cancellation token", "cancellationToken")]
+        [InlineData("cancellation token source", "cancellationTokenSource")]
         public void ShouldConvertToCamelCaseNotation(string name, string expected)
         {
             var context = new Context(new CamelCaseNotation());
