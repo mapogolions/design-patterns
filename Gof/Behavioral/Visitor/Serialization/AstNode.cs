@@ -1,4 +1,4 @@
-namespace Gof.Behavioral.Visitor
+namespace Gof.Behavioral.Visitor.Serialization
 {
     public abstract class AstNode
     {

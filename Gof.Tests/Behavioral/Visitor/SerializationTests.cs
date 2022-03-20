@@ -1,9 +1,9 @@
-using Gof.Behavioral.Visitor;
+using Gof.Behavioral.Visitor.Serialization;
 using Xunit;
 
-namespace Gof.Tests.Behavioral
+namespace Gof.Tests.Behavioral.Visitor.Serialization
 {
-    public class VisitorTests
+    public class SerializationTests
     {
         private readonly ISerializer _serializer = new Serializer();
 
