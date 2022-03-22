@@ -17,7 +17,7 @@ namespace Gof.Behavioral.Visitor.EventSourcing
         {
             foreach (var @event in events)
             {
-                @event.Apply(_visitor);
+                @event.Accept(_visitor);
             }
         }
 

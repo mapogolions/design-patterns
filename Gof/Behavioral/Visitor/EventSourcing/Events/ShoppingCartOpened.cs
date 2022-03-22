@@ -7,6 +7,6 @@ namespace Gof.Behavioral.Visitor.EventSourcing.Events
         public Guid ShoppingCartId { get; init; }
         public Guid ClientId { get; init; }
 
-        public void Apply(IShoppingCartEventVisitor visitor) => throw new NotImplementedException();
+        public void Accept(IShoppingCartEventVisitor visitor) => throw new NotImplementedException();
     }
 }
