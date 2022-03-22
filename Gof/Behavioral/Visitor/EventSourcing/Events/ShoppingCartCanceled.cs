@@ -7,7 +7,7 @@ namespace Gof.Behavioral.Visitor.EventSourcing.Events
         public Guid ShoppingCartId { get; init; }
         public DateTime CanceledAt { get; init; }
 
-        public void Accept(IShoppingCartEventVisitor visitor)
+        public void Apply(IShoppingCartEventVisitor visitor)
         {
             throw new NotImplementedException();
         }

@@ -2,7 +2,7 @@ using System;
 
 namespace Gof.Behavioral.Visitor.EventSourcing.Events
 {
-    public interface IShoppingCartEventVisitor
+    public interface IShoppingCartEventVisitor : IAggregateEventVisitor
     {
         // void Visit(ShoppingCartOpened @event);
     }
