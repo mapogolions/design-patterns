@@ -2,9 +2,10 @@ using System;
 
 namespace Gof.Behavioral.Visitor.EventSourcing.Events
 {
-    public class GameOver
+    public record GameOver(
+        Guid GameId,
+        DateTime EndedAt) : IBasketballGameEvent
     {
-        public Guid GameId { get; init; }
-        public DateTime EndedAt { get; init; }
+        public void Accept(IBasketballGameEventVisitor visitor) => visitor.Visit(this);
     }
 }

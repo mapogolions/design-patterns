@@ -2,10 +2,11 @@ using System;
 
 namespace Gof.Behavioral.Visitor.EventSourcing.Events
 {
-    public class PointsScored
+    public record PointsScored(
+        Guid GameId,
+        Guid TeamId,
+        int Points) : IBasketballGameEvent
     {
-        public Guid GameId { get; init; }
-        public Guid TeamId { get; init; }
-        public int Points { get; init; }
+        public void Accept(IBasketballGameEventVisitor visitor) => visitor.Visit(this);
     }
 }

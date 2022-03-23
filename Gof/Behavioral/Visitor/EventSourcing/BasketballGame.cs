@@ -61,6 +61,7 @@ namespace Gof.Behavioral.Visitor.EventSourcing
             if (Id != @event.GameId)
                 throw new ArgumentException(nameof(@event.GameId));
             EndedAt = @event.EndedAt;
+            Status = GameStatus.Over;
         }
     }
 }
