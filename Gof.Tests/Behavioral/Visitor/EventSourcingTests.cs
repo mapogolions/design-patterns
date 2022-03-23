@@ -9,7 +9,7 @@ namespace Gof.Tests.Behavioral.Visitor.EventSourcing
     public class EventSourcingTests
     {
         [Fact]
-        public void TestName()
+        public void ShouldAggregateBasketballGameEvents()
         {
             var gameId = Guid.NewGuid();
             var startedAt = DateTime.UtcNow;
