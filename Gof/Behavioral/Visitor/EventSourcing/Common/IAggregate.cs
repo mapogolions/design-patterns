@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Gof.Behavioral.Visitor.EventSourcing
+namespace Gof.Behavioral.Visitor.EventSourcing.Common
 {
 
     public interface IAggregate<TAggregateEventVisitor, TEvent>
