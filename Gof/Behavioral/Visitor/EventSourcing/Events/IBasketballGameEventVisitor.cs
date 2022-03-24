@@ -1,7 +1,6 @@
 using Gof.Behavioral.Visitor.EventSourcing.Common;
-using Gof.Behavioral.Visitor.EventSourcing.Events;
 
-namespace Gof.Behavioral.Visitor.EventSourcing
+namespace Gof.Behavioral.Visitor.EventSourcing.Events
 {
     public interface IBasketballGameEventVisitor : IAggregateEventVisitor
     {
