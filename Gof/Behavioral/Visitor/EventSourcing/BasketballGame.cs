@@ -35,7 +35,7 @@ namespace Gof.Behavioral.Visitor.EventSourcing
         void IBasketballGameEventVisitor.Visit(PointsScored @event)
         {
             if (Status == GameStatus.Pending)
-                throw new InvalidOperationException("Game has not been started yet");
+                throw new InvalidOperationException("Game hasn't started yet");
             if (Status == GameStatus.Over)
                 throw new InvalidOperationException("Game over");
             if (Id != @event.GameId)
@@ -56,7 +56,7 @@ namespace Gof.Behavioral.Visitor.EventSourcing
         void IBasketballGameEventVisitor.Visit(GameOver @event)
         {
             if (Status == GameStatus.Pending)
-                throw new InvalidOperationException("Game has not been started yet");
+                throw new InvalidOperationException("Game hasn't started yet");
             if (Status == GameStatus.Over) return;
             if (Id != @event.GameId)
                 throw new ArgumentException(nameof(@event.GameId));
