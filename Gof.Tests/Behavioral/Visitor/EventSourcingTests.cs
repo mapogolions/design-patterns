@@ -14,8 +14,8 @@ namespace Gof.Tests.Behavioral.Visitor.EventSourcing
             var gameId = Guid.NewGuid();
             var startedAt = DateTime.UtcNow;
             var endedAt = startedAt + TimeSpan.FromHours(2);
-            var homeTeam = new BasketballTeam(Guid.NewGuid(), "Los Angles Lakers");
-            var awayTeam = new BasketballTeam(Guid.NewGuid(), "Maimi Heat");
+            var homeTeam = new BasketballTeam(Guid.NewGuid(), "Los Angeles Lakers");
+            var awayTeam = new BasketballTeam(Guid.NewGuid(), "Miami Heat");
             var events = new List<IBasketballGameEvent>
             {
                 new GameOn(gameId, startedAt, homeTeam, awayTeam),
