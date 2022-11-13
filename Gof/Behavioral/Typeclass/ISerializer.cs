@@ -5,7 +5,7 @@ namespace Gof.Behavioral.Typeclass
 {
     public interface ISerializer<T>
     {
-        string Serialize(T obj);
+        string Stringify(T obj);
     }
 
     public static class SerializerInstances
@@ -17,28 +17,28 @@ namespace Gof.Behavioral.Typeclass
     // approach 1
     public static class Serializer
     {
-        public static string Serialize<T>(T node, ISerializer<T> serializer)=> serializer.Serialize(node);
+        public static string Serialize<T>(T node, ISerializer<T> serializer)=> serializer.Stringify(node);
     }
 
     // approach 2
     public static class SerializerExtensions
     {
-        public static string Serialize<T>(this T obj, /** implicit in scala2 world **/ ISerializer<T> serializer)
+        public static string Stringify<T>(this T obj, /** implicit in scala2 world **/ ISerializer<T> serializer)
         {
             if (obj is null) throw new ArgumentNullException(nameof(obj));
-            return serializer.Serialize(obj);
+            return serializer.Stringify(obj);
         }
 
-        public static string Serialize(this Arrow fn) // be like implicit in scala
+        public static string Stringify(this Arrow fn) // be like implicit in scala
         {
             if (fn is null) throw new ArgumentNullException(nameof(fn));
-            return fn.Serialize(SerializerInstances.ArrowSerializer);
+            return fn.Stringify(SerializerInstances.ArrowSerializer);
         }
 
-        public static string Serialize(this Klass fn)
+        public static string Stringify(this Klass fn)
         {
             if (fn is null) throw new ArgumentNullException(nameof(fn));
-            return fn.Serialize(SerializerInstances.KlassSerializer);
+            return fn.Stringify(SerializerInstances.KlassSerializer);
         }
     }
 }
