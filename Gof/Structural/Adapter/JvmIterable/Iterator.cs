@@ -1,8 +1,7 @@
-namespace Gof.Structural.Adapter.JvmIterable
+namespace Gof.Structural.Adapter.JvmIterable;
+
+public interface Iterator<T>
 {
-    public interface Iterator<T>
-    {
-        bool HasNext();
-        T Next();
-    }
+    bool HasNext();
+    T Next();
 }

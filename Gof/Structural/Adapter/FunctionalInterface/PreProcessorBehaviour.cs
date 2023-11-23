@@ -1,24 +1,16 @@
-using System;
-using System.Collections.Generic;
+namespace Gof.Structural.Adapter.FunctionalInterface;
 
-namespace Gof.Structural.Adapter.FunctionalInterface
+public class PreProcessorBehaviour<TRequest, TResponse>(IEnumerable<IPreProcessor<TRequest>> preprocessors)
+    : IPipelineBehaviour<TRequest, TResponse>
 {
-    public class PreProcessorBehaviour<TRequest, TResponse> : IPipelineBehaviour<TRequest, TResponse>
+    private readonly IEnumerable<IPreProcessor<TRequest>> _preprocessors = preprocessors;
+
+    public TResponse Handle(TRequest request, Func<TRequest, TResponse> next)
     {
-        private readonly IEnumerable<IPreProcessor<TRequest>> _preprocessors;
-
-        public PreProcessorBehaviour(IEnumerable<IPreProcessor<TRequest>> preprocessors)
+        foreach (var preprocessor in _preprocessors)
         {
-            _preprocessors = preprocessors;
+            preprocessor.Process(request);
         }
-
-        public TResponse Handle(TRequest request, Func<TRequest, TResponse> next)
-        {
-            foreach (var preprocessor in _preprocessors)
-            {
-                preprocessor.Process(request);
-            }
-            return next(request);
-        }
+        return next(request);
     }
 }

@@ -1,6 +1,3 @@
-using System;
+namespace Gof.Behavioral.Visitor.EventSourcing;
 
-namespace Gof.Behavioral.Visitor.EventSourcing
-{
-    public record BasketballTeam(Guid Id, string Name);
-}
+public record BasketballTeam(Guid Id, string Name);

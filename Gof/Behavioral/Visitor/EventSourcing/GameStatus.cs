@@ -1,9 +1,8 @@
-namespace Gof.Behavioral.Visitor.EventSourcing
+namespace Gof.Behavioral.Visitor.EventSourcing;
+
+public enum GameStatus
 {
-    public enum GameStatus
-    {
-        Pending,
-        Started,
-        Over,
-    }
+    Pending,
+    Started,
+    Over,
 }

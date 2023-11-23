@@ -1,7 +1,6 @@
-namespace Gof.Structural.Adapter.JvmIterable
+namespace Gof.Structural.Adapter.JvmIterable;
+
+public interface Iterable<T>
 {
-    public interface Iterable<T>
-    {
-        Iterator<T> Iterator();
-    }
+    Iterator<T> Iterator();
 }

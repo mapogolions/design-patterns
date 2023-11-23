@@ -1,12 +1,9 @@
-namespace Gof.Behavioral.State.Promise
+namespace Gof.Behavioral.State.Promise;
+
+internal class RejectedPromiseState<T>(Promise<T> promise) : IPromiseState<T>
 {
-        internal class RejectedPromiseState<T> : IPromiseState<T>
-    {
-        private readonly Promise<T> _promise;
+    private readonly Promise<T> _promise = promise;
 
-        public RejectedPromiseState(Promise<T> promise) => _promise = promise;
-
-        public Promise<T> Resolve(T value) => _promise;
-        public Promise<T> Reject(string error) => _promise;
-    }
+    public Promise<T> Resolve(T value) => _promise;
+    public Promise<T> Reject(string error) => _promise;
 }

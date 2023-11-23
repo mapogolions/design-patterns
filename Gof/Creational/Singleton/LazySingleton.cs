@@ -1,25 +1,24 @@
-﻿namespace Gof.Creational.Singleton
+﻿namespace Gof.Creational.Singleton;
+
+public class LazySingleton
 {
-    public class LazySingleton
+    private static LazySingleton? _instance;
+    private static readonly object _lock = new();
+
+    private LazySingleton() { }
+
+    public static LazySingleton Singleton
     {
-        private static LazySingleton? _instance;
-        private static readonly object _lock = new();
-
-        private LazySingleton() { }
-
-        public static LazySingleton Singleton
+        get
         {
-            get
+            if (_instance is null)
             {
-                if (_instance is null)
+                lock(_lock)
                 {
-                    lock(_lock)
-                    {
-                        _instance ??= new LazySingleton();
-                    }
+                    _instance ??= new LazySingleton();
                 }
-                return _instance;
             }
+            return _instance;
         }
     }
 }

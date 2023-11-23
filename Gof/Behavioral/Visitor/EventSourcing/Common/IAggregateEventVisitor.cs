@@ -1,4 +1,3 @@
-namespace Gof.Behavioral.Visitor.EventSourcing.Common
-{
-    public interface IAggregateEventVisitor { }
-}
+namespace Gof.Behavioral.Visitor.EventSourcing.Common;
+
+public interface IAggregateEventVisitor { }

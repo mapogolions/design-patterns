@@ -1,9 +1,6 @@
-using System;
+namespace Gof.Structural.Adapter.FunctionalInterface;
 
-namespace Gof.Structural.Adapter.FunctionalInterface
+public interface IPipelineBehaviour<TRequest, TResponse>
 {
-    public interface IPipelineBehaviour<TRequest, TResponse>
-    {
-        TResponse Handle(TRequest request, Func<TRequest, TResponse> next);
-    }
+    TResponse Handle(TRequest request, Func<TRequest, TResponse> next);
 }

@@ -1,8 +1,7 @@
-namespace Gof.Behavioral.State.Promise
+namespace Gof.Behavioral.State.Promise;
+
+internal interface IPromiseState<T>
 {
-    internal interface IPromiseState<T>
-    {
-        Promise<T> Resolve(T value);
-        Promise<T> Reject(string error);
-    }
+    Promise<T> Resolve(T value);
+    Promise<T> Reject(string error);
 }

@@ -1,16 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 
-namespace Gof.Structural.Adapter.JvmIterable
+namespace Gof.Structural.Adapter.JvmIterable;
+
+public class IterableAdapter<T>(Iterable<T> iterable) : IEnumerable<T>
 {
-    public class IterableAdapter<T> : IEnumerable<T>
-    {
-        private readonly Iterable<T> _iterable;
+    private readonly Iterable<T> _iterable = iterable;
 
-        public IterableAdapter(Iterable<T> iterable) => _iterable = iterable;
+    public IEnumerator<T> GetEnumerator() => new IteratorAdapter<T>(_iterable.Iterator());
 
-        public IEnumerator<T> GetEnumerator() => new IteratorAdapter<T>(_iterable.Iterator());
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

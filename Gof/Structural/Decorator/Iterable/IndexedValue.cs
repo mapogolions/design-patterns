@@ -1,16 +1,9 @@
-namespace Gof.Structural.Decorator.Iterable
+namespace Gof.Structural.Decorator.Iterable;
+
+public readonly struct IndexedValue<T>(int index, T value)
 {
-    public readonly struct IndexedValue<T>
-    {
-        public IndexedValue(int index, T value)
-        {
-            Index = index;
-            Value = value;
-        }
+    public int Index { get; } = index;
+    public T Value { get; } = value;
 
-        public int Index { get; }
-        public T Value { get; }
-
-        public override string ToString() => $"IndexedValue({Index}, {Value})";
-    }
+    public override string ToString() => $"IndexedValue({Index}, {Value})";
 }

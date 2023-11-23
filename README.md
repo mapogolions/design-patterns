@@ -1,14 +1,13 @@
 ### Design Patterns
 
 **Creational**
-- [x] Factory method
 - [x] Builder
+- [x] Singleton
 
 **Structural**
 - [x] Decorator
 - [x] Bridge
 - [x] Adapter
-- [x] Proxy
 
 **Behavioral**
 - [x] Template method

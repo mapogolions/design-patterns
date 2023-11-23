@@ -1,9 +1,6 @@
-using System;
+namespace Gof.Behavioral.Visitor.EventSourcing.Events;
 
-namespace Gof.Behavioral.Visitor.EventSourcing.Events
+public record PointsScored(Guid GameId, Guid TeamId, int Points) : IBasketballGameEvent
 {
-    public record PointsScored(Guid GameId, Guid TeamId, int Points) : IBasketballGameEvent
-    {
-        public void Accept(IBasketballGameEventVisitor visitor) => visitor.Visit(this);
-    }
+    public void Accept(IBasketballGameEventVisitor visitor) => visitor.Visit(this);
 }

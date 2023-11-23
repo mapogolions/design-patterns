@@ -1,16 +1,9 @@
-namespace Gof.Behavioral.Visitor.Serialization
+namespace Gof.Behavioral.Visitor.Serialization;
+
+public class Arrow(string name, string domain, string codomain) : AstNode
 {
-    public class Arrow : AstNode
-    {
-        public Arrow(string name, string domain, string codomain)
-        {
-            Name = name;
-            Domain = domain;
-            Codomain = codomain;
-        }
-        public string Name { get; }
-        public string Domain { get; }
-        public string Codomain { get; }
-        public override string Stringify(ISerializer serializer) => serializer.Serialize(this);
-    }
+    public string Name { get; } = name;
+    public string Domain { get; } = domain;
+    public string Codomain { get; } = codomain;
+    public override string Stringify(ISerializer serializer) => serializer.Serialize(this);
 }

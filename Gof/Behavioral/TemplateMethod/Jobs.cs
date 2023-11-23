@@ -1,41 +1,32 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+namespace Gof.Behavioral.TemplateMethod;
 
-namespace Gof.Behavioral.TemplateMethod
+public class TakeTimeJob(TimeSpan takeTime) : BackgroundJob
 {
-    public class TakeTimeJob : BackgroundJob
+    private readonly TimeSpan _takeTime = takeTime;
+
+    protected override async Task ExecuteAsync(CancellationToken token = default)
     {
-        private readonly TimeSpan _takeTime;
-
-        public TakeTimeJob(TimeSpan takeTime) => _takeTime = takeTime;
-
-        protected override async Task ExecuteAsync(CancellationToken token = default)
-        {
-            await Task.Delay(_takeTime, token);
-        }
+        await Task.Delay(_takeTime, token);
     }
+}
 
-    public class EndlessWaitingJob : TakeTimeJob
+public class EndlessWaitingJob : TakeTimeJob
+{
+    public EndlessWaitingJob() : base(Timeout.InfiniteTimeSpan) { }
+}
+
+public class CompletedAtStartTimeJob : BackgroundJob
+{
+    protected override Task ExecuteAsync(CancellationToken token = default)
     {
-        public EndlessWaitingJob() : base(Timeout.InfiniteTimeSpan) { }
+        return Task.CompletedTask;
     }
+}
 
-    public class CompletedAtStartTimeJob : BackgroundJob
+public class NonCancellableJob(TimeSpan takeTime) : TakeTimeJob(takeTime)
+{
+    protected override Task ExecuteAsync(CancellationToken token = default)
     {
-        protected override Task ExecuteAsync(CancellationToken token = default)
-        {
-            return Task.CompletedTask;
-        }
-    }
-
-    public class NonCancellableJob : TakeTimeJob
-    {
-        public NonCancellableJob(TimeSpan takeTime) : base(takeTime) { }
-
-        protected override Task ExecuteAsync(CancellationToken token = default)
-        {
-            return base.ExecuteAsync(default);
-        }
+        return base.ExecuteAsync(default);
     }
 }

@@ -1,13 +1,8 @@
-using System;
+namespace Gof.Structural.Adapter.FunctionalInterface;
 
-namespace Gof.Structural.Adapter.FunctionalInterface
+public class PreProcessorAdapter<TRequest>(Action<TRequest> action) : IPreProcessor<TRequest>
 {
-    public class PreProcessorAdapter<TRequest> : IPreProcessor<TRequest>
-    {
-        private readonly Action<TRequest> _action;
+    private readonly Action<TRequest> _action = action;
 
-        public PreProcessorAdapter(Action<TRequest> action) => _action = action;
-
-        public void Process(TRequest request) => _action(request);
-    }
+    public void Process(TRequest request) => _action(request);
 }

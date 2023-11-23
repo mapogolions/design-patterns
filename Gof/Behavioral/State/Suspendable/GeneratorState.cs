@@ -1,16 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Gof.Behavioral.State.Suspendable
 {
-    internal abstract class GeneratorState<T>
+    internal abstract class GeneratorState<T>(Generator<T> generator)
     {
-        protected readonly Generator<T> Generator;
-
-        public GeneratorState(Generator<T> generator)
-        {
-            Generator = generator;
-        }
+        protected readonly Generator<T> Generator = generator;
 
         internal virtual void Suspend() => throw new NotImplementedException();
         internal virtual void Resume() => throw new NotImplementedException();

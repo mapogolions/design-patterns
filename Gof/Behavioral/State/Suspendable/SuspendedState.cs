@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
+namespace Gof.Behavioral.State.Suspendable;
 
-namespace Gof.Behavioral.State.Suspendable
+internal class SuspendedState<T> : GeneratorState<T>
 {
-    internal class SuspendedState<T> : GeneratorState<T>
+    internal SuspendedState(Generator<T> generator) : base(generator) { }
+
+    internal override void Resume()
     {
-        internal SuspendedState(Generator<T> generator) : base(generator) { }
-
-        internal override void Resume()
-        {
-            Generator.CurrentState = Generator.ResumedState;
-        }
-
-        internal override void Suspend() { /* do nothing */ }
-
-        internal override T Yield(IEnumerator<T> enumerator) => throw new InvalidOperationException();
+        Generator.CurrentState = Generator.ResumedState;
     }
+
+    internal override void Suspend() { /* do nothing */ }
+
+    internal override T Yield(IEnumerator<T> enumerator) => throw new InvalidOperationException();
 }

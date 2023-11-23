@@ -1,16 +1,9 @@
-namespace Gof.Behavioral.Typeclass
+namespace Gof.Behavioral.Typeclass;
+
+public class Klass(string name, Klass? parent) : AstNode
 {
-    public class Klass : AstNode
-    {
-        public Klass(string name, Klass parent)
-        {
-            Name = name;
-            Parent = parent;
-        }
+    public Klass(string name) : this(name, new Klass("obj", null)) {}
 
-        public Klass(string name) : this(name, new Klass("obj", null)) {}
-
-        public string Name { get; }
-        public Klass Parent { get; }
-    }
+    public string Name { get; } = name;
+    public Klass? Parent { get; } = parent;
 }

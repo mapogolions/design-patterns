@@ -1,9 +1,8 @@
-namespace Gof.Behavioral.ChainOfResponsibility
+namespace Gof.Behavioral.ChainOfResponsibility;
+
+public enum ReviewResult
 {
-    public enum ReviewResult
-    {
-        Approved,
-        RequestedChanges,
-        Declined
-    }
+    Approved,
+    RequestedChanges,
+    Declined
 }

@@ -1,7 +1,6 @@
-namespace Gof.Behavioral.Strategy
+namespace Gof.Behavioral.Strategy;
+
+public interface INotation
 {
-    public interface INotation
-    {
-         string Convert(string name);
-    }
+        string Convert(string name);
 }

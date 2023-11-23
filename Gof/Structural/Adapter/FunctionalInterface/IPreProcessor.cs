@@ -1,7 +1,6 @@
-namespace Gof.Structural.Adapter.FunctionalInterface
+namespace Gof.Structural.Adapter.FunctionalInterface;
+
+public interface IPreProcessor<in TRequest>
 {
-    public interface IPreProcessor<in TRequest>
-    {
-        void Process(TRequest request);
-    }
+    void Process(TRequest request);
 }

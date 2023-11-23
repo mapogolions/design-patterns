@@ -1,34 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 
-namespace Gof.Structural.Adapter.JvmIterable
+namespace Gof.Structural.Adapter.JvmIterable;
+
+public class IteratorAdapter<T>(Iterator<T> iterator) : IEnumerator<T>
 {
-    public class IteratorAdapter<T> : IEnumerator<T>
+    private readonly Iterator<T> _iterator = iterator;
+    private T _value = default;
+
+    public T Current => _value;
+
+    object IEnumerator.Current => Current;
+
+    public bool MoveNext()
     {
-        private readonly Iterator<T> _iterator;
-        private T _value = default(T);
+        if (!_iterator.HasNext()) return false;
+        _value = _iterator.Next();
+        return true;
+    }
 
-        public IteratorAdapter(Iterator<T> iterator) => _iterator = iterator;
+    public void Reset()
+    {
+        //
+    }
 
-        public T Current => _value;
-
-        object IEnumerator.Current => Current;
-
-        public bool MoveNext()
-        {
-            if (!_iterator.HasNext()) return false;
-            _value = _iterator.Next();
-            return true;
-        }
-
-        public void Reset()
-        {
-            //
-        }
-
-        public void Dispose()
-        {
-            //
-        }
+    public void Dispose()
+    {
+        //
     }
 }

@@ -1,12 +1,8 @@
-using System.Collections.Generic;
+namespace Gof.Behavioral.Visitor.EventSourcing.Common;
 
-namespace Gof.Behavioral.Visitor.EventSourcing.Common
+public interface IAggregate<TAggregateEventVisitor, TEvent>
+    where TAggregateEventVisitor : IAggregateEventVisitor
+    where TEvent : IAggregateEvent<TAggregateEventVisitor>
 {
-
-    public interface IAggregate<TAggregateEventVisitor, TEvent>
-        where TAggregateEventVisitor : IAggregateEventVisitor
-        where TEvent : IAggregateEvent<TAggregateEventVisitor>
-    {
-        void Aggregate(IEnumerable<TEvent> events);
-    }
+    void Aggregate(IEnumerable<TEvent> events);
 }

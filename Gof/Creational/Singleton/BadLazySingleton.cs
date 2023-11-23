@@ -1,22 +1,21 @@
-﻿namespace Gof.Creational.Singleton
+﻿namespace Gof.Creational.Singleton;
+
+public class BadLazySingleton
 {
-    public class BadLazySingleton
+    private static BadLazySingleton? _instance;
+    private static readonly object _lock = new();
+
+    private BadLazySingleton() { }
+
+    public static BadLazySingleton Singleton
     {
-        private static BadLazySingleton? _instance;
-        private static readonly object _lock = new();
-
-        private BadLazySingleton() { }
-
-        public static BadLazySingleton Singleton
+        get
         {
-            get
+            lock(_lock)
             {
-                lock(_lock)
-                {
-                    _instance ??= new BadLazySingleton();
-                }
-                return _instance;
+                _instance ??= new BadLazySingleton();
             }
+            return _instance;
         }
     }
 }

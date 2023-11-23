@@ -1,9 +1,8 @@
-namespace Gof.Behavioral.Observer.RecursiveType
+namespace Gof.Behavioral.Observer.RecursiveType;
+
+public interface IObservable<T> where T : IObservable<T>
 {
-    public interface IObservable<T> where T : IObservable<T>
-    {
-         bool Attach(IObserver<T> observer);
-         bool Detach(IObserver<T> observer);
-         void Notify();
-    }
+    bool Attach(IObserver<T> observer);
+    bool Detach(IObserver<T> observer);
+    void Notify();
 }

@@ -1,11 +1,10 @@
-namespace Gof.Structural.Bridge
+namespace Gof.Structural.Bridge;
+
+public abstract class WebPage
 {
-    public abstract class WebPage
-    {
-        protected readonly ITheme _theme;
+    protected readonly ITheme _theme;
 
-        public WebPage(ITheme theme) => _theme = theme;
+    public WebPage(ITheme theme) => _theme = theme;
 
-        public abstract string Render();
-    }
+    public abstract string Render();
 }

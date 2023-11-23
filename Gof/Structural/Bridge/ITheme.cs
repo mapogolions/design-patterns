@@ -1,7 +1,6 @@
-namespace Gof.Structural.Bridge
+namespace Gof.Structural.Bridge;
+
+public interface ITheme
 {
-    public interface ITheme
-    {
-        string BackgroundColor { get; }
-    }
+    string BackgroundColor { get; }
 }

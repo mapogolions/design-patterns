@@ -1,33 +1,24 @@
-using System.Collections.Generic;
+namespace Gof.Structural.Decorator.Manipula;
 
-namespace Gof.Structural.Decorator.Manipula
+public class SkipLastEnumerable<T>(IEnumerable<T> origin, int count) : BaseEnumerable<T>
 {
-    public class SkipLastEnumerable<T> : BaseEnumerable<T>
+    private readonly IEnumerable<T> _origin = origin;
+    private readonly int _count = count;
+
+    public override IEnumerator<T> GetEnumerator()
     {
-        private readonly IEnumerable<T> _origin;
-        private readonly int _count;
-
-        public SkipLastEnumerable(IEnumerable<T> origin, int count)
+        if (_count <= 0)
         {
-            _origin = origin;
-            _count = count;
+            foreach (var item in _origin)
+                yield return item;
         }
-
-        public override IEnumerator<T> GetEnumerator()
+        else
         {
-            if (_count <= 0)
+            var queue = new Queue<T>();
+            foreach (var item in _origin)
             {
-                foreach (var item in _origin)
-                    yield return item;
-            }
-            else
-            {
-                var queue = new Queue<T>();
-                foreach (var item in _origin)
-                {
-                    if (queue.Count == _count) yield return queue.Dequeue();
-                    queue.Enqueue(item);
-                }
+                if (queue.Count == _count) yield return queue.Dequeue();
+                queue.Enqueue(item);
             }
         }
     }

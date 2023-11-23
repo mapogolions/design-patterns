@@ -1,11 +1,10 @@
-﻿namespace Gof.Creational.Singleton
+﻿namespace Gof.Creational.Singleton;
+
+public class EagerSingleton
 {
-    public class EagerSingleton
-    {
-        private static readonly EagerSingleton _instance = new();
+    private static readonly EagerSingleton _instance = new();
 
-        private EagerSingleton() { }
+    private EagerSingleton() { }
 
-        public static EagerSingleton Singleton => _instance;
-    }
+    public static EagerSingleton Singleton => _instance;
 }

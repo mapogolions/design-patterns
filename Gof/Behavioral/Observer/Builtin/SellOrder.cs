@@ -1,22 +1,14 @@
-using System;
+namespace Gof.Behavioral.Observer.Builtin;
 
-namespace Gof.Behavioral.Observer.Builtin
+public class SellOrder(decimal level) : IObserver<CurrencyPair>
 {
-    public class SellOrder : System.IObserver<CurrencyPair>
-    {
-        private readonly decimal _level;
+    private readonly decimal _level = level;
 
-        public SellOrder(decimal level)
-        {
-            _level = level;
-        }
+    public bool CanSell { get; private set; }
 
-        public bool CanSell { get; private set; }
+    public void OnCompleted() => throw new NotImplementedException();
 
-        public void OnCompleted() => throw new NotImplementedException();
+    public void OnError(Exception error) => throw new NotImplementedException();
 
-        public void OnError(Exception error) => throw new NotImplementedException();
-
-        public void OnNext(CurrencyPair value) => CanSell = value.CurrentRate < _level;
-    }
+    public void OnNext(CurrencyPair value) => CanSell = value.CurrentRate < _level;
 }

@@ -1,13 +1,10 @@
-namespace Gof.Behavioral.Observer.RecursiveType
+namespace Gof.Behavioral.Observer.RecursiveType;
+
+public class SellOrder(decimal supportLevel) : IObserver<CurrencyPair>
 {
-    public class SellOrder : IObserver<CurrencyPair>
-    {
-        private readonly decimal _supportLevel;
+    private readonly decimal _supportLevel = supportLevel;
 
-        public bool CanSell { get; private set; }
+    public bool CanSell { get; private set; }
 
-        public SellOrder(decimal supportLevel) => _supportLevel = supportLevel;
-
-        public void Update(CurrencyPair subject) => CanSell = subject.CurrentRate < _supportLevel;
-    }
+    public void Update(CurrencyPair subject) => CanSell = subject.CurrentRate < _supportLevel;
 }

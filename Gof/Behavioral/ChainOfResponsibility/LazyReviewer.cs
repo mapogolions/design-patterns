@@ -1,14 +1,11 @@
-namespace Gof.Behavioral.ChainOfResponsibility
+namespace Gof.Behavioral.ChainOfResponsibility;
+
+public class LazyReviewer(int affectedLines) : Reviewer
 {
-    public class LazyReviewer : Reviewer
+    private readonly int _affectedLines = affectedLines;
+
+    public override ReviewResult Review(PullRequest pullRequest)
     {
-        private readonly int _affectedLines;
-
-        public LazyReviewer(int affectedLines) => _affectedLines = affectedLines;
-
-        public override ReviewResult Review(PullRequest pullRequest)
-        {
-            return pullRequest.AffectedLines > _affectedLines ? ReviewResult.Declined : PassNext(pullRequest);
-        }
+        return pullRequest.AffectedLines > _affectedLines ? ReviewResult.Declined : PassNext(pullRequest);
     }
 }

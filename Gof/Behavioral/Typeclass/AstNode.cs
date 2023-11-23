@@ -1,4 +1,3 @@
-namespace Gof.Behavioral.Typeclass
-{
-    public abstract class AstNode { }
-}
+namespace Gof.Behavioral.Typeclass;
+
+public abstract class AstNode { }

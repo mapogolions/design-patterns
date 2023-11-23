@@ -1,49 +1,47 @@
-using System.Collections.Generic;
 
-namespace Gof.Behavioral.Observer.RecursiveType
+namespace Gof.Behavioral.Observer.RecursiveType;
+
+public class CurrencyPair : IObservable<CurrencyPair>
 {
-    public class CurrencyPair : IObservable<CurrencyPair>
+    private readonly List<IObserver<CurrencyPair>> _orders = [];
+    private decimal _currentRate;
+
+    public CurrencyPair(string name, decimal currentRate)
     {
-        private readonly IList<IObserver<CurrencyPair>> _orders = new List<IObserver<CurrencyPair>>();
-        private decimal _currentRate;
+        Name = name;
+        CurrentRate = currentRate;
+    }
 
-        public CurrencyPair(string name, decimal currentRate)
+    public string Name { get; }
+
+    public decimal CurrentRate
+    {
+        get => _currentRate;
+        set
         {
-            Name = name;
-            CurrentRate = currentRate;
+            _currentRate = value;
+            Notify();
         }
+    }
 
-        public string Name { get; }
+    public bool Attach(IObserver<CurrencyPair> order)
+    {
+        if (_orders.Contains(order)) return false;
+        _orders.Add(order);
+        order.Update(this);
+        return true;
+    }
 
-        public decimal CurrentRate
+    public bool Detach(IObserver<CurrencyPair> order)
+    {
+        return _orders.Remove(order);
+    }
+
+    public void Notify()
+    {
+        foreach (var order in _orders)
         {
-            get => _currentRate;
-            set
-            {
-                _currentRate = value;
-                Notify();
-            }
-        }
-
-        public bool Attach(IObserver<CurrencyPair> order)
-        {
-            if (_orders.Contains(order)) return false;
-            _orders.Add(order);
             order.Update(this);
-            return true;
-        }
-
-        public bool Detach(IObserver<CurrencyPair> order)
-        {
-            return _orders.Remove(order);
-        }
-
-        public void Notify()
-        {
-            foreach (var order in _orders)
-            {
-                order.Update(this);
-            }
         }
     }
 }

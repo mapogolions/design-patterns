@@ -1,7 +1,6 @@
-namespace Gof.Structural.Bridge
+namespace Gof.Structural.Bridge;
+
+public class LightTheme : ITheme
 {
-    public class LightTheme : ITheme
-    {
-        public string BackgroundColor => "Light";
-    }
+    public string BackgroundColor => "Light";
 }
