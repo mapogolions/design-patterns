@@ -2,7 +2,8 @@
 {
     public class BadLazySingleton
     {
-        private static BadLazySingleton _instance;
+        private static BadLazySingleton? _instance;
+        private static readonly object _lock = new();
 
         private BadLazySingleton() { }
 
@@ -10,12 +11,9 @@
         {
             get
             {
-                lock(_instance)
+                lock(_lock)
                 {
-                    if (_instance is null)
-                    {
-                        _instance = new BadLazySingleton();
-                    }
+                    _instance ??= new BadLazySingleton();
                 }
                 return _instance;
             }

@@ -11,16 +11,17 @@ namespace Gof.Behavioral.TemplateMethod
 
         public virtual Task ExecutingTask => _executingTask;
 
-        public Task RunAsync(CancellationToken token = default)
+        public Task RunAsync(CancellationToken cancellationToken = default)
         {
-            _cts = CancellationTokenSource.CreateLinkedTokenSource(token);
+            cancellationToken.ThrowIfCancellationRequested();
+            _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
             _executingTask = ExecuteAsync(_cts.Token);
             return _executingTask.IsCompleted ? _executingTask : Task.CompletedTask;
         }
 
         protected abstract Task ExecuteAsync(CancellationToken token = default);
 
-        public async Task KillAsync(CancellationToken token = default)
+        public async Task StopAsync(CancellationToken token = default)
         {
             if (_executingTask is null) return;
             try

@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace Gof.Creational.Singleton
+﻿namespace Gof.Creational.Singleton
 {
     // Have borrowed here: https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.Options/src/UnnamedOptionsManager.cs
     /**
@@ -15,8 +13,8 @@ namespace Gof.Creational.Singleton
     **/
     public class CompareAndExchangeLockSingleton
     {
-        private static CompareAndExchangeLockSingleton _instance;
-        private static object _lockObj;
+        private static CompareAndExchangeLockSingleton? _instance;
+        private static object? _lockObj;
 
         private CompareAndExchangeLockSingleton() { }
 
@@ -32,10 +30,6 @@ namespace Gof.Creational.Singleton
                 {
                     _instance ??= new CompareAndExchangeLockSingleton();
                     return _instance;
-                    // if (_instance is null)
-                    // {
-                    //     _instance = new CompareAndExchangeLockSingleton();
-                    // }
                 }
             }
         }

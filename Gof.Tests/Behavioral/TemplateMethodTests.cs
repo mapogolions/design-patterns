@@ -1,7 +1,4 @@
-using System.Threading.Tasks;
-using Xunit;
 using Gof.Behavioral.TemplateMethod;
-using System;
 
 namespace Gof.Tests.Behavioral
 {
@@ -24,7 +21,7 @@ namespace Gof.Tests.Behavioral
             var backgroundJob = new NonCancellableJob(TimeSpan.FromMilliseconds(100));
             await backgroundJob.RunAsync(new());
 
-            await backgroundJob.KillAsync(new());
+            await backgroundJob.StopAsync(new());
 
             Assert.True(backgroundJob.ExecutingTask.IsCompletedSuccessfully);
         }
@@ -50,7 +47,7 @@ namespace Gof.Tests.Behavioral
 
             Assert.False(backgroundJob.ExecutingTask.IsCompleted);
 
-            await backgroundJob.KillAsync(default);
+            await backgroundJob.StopAsync(default);
 
             Assert.True(backgroundJob.ExecutingTask.IsCompleted);
             Assert.True(backgroundJob.ExecutingTask.IsCanceled);
@@ -64,8 +61,9 @@ namespace Gof.Tests.Behavioral
 
             Assert.False(backgroundJob.ExecutingTask.IsCompleted);
 
-            backgroundJob.Dispose();
+            backgroundJob.Dispose(); // endless wait interrupted
 
+            await Assert.ThrowsAsync<TaskCanceledException>(async () => await backgroundJob.ExecutingTask);
             Assert.True(backgroundJob.ExecutingTask.IsCompleted);
             Assert.True(backgroundJob.ExecutingTask.IsCanceled);
         }
