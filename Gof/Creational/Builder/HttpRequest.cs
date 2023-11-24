@@ -6,19 +6,21 @@ public class HttpRequest
     private readonly string _uri;
     private readonly string _protocolVersion;
     private readonly string? _queryString;
+    private readonly string? _body;
 
-    private HttpRequest(string method, string uri, string protocolVersion, string? queryString)
+    private HttpRequest(string method, string uri, string protocolVersion, string? queryString, string? body)
     {
         _method = method;
         _uri = uri;
         _protocolVersion = protocolVersion;
         _queryString = queryString;
+        _body = body;
     }
 
     public override string ToString()
     {
         var statusLine = $"{_method} {_uri}{_queryString} HTTP/{_protocolVersion}";
-        return $"{statusLine}\r\n\r\n";
+        return $"{statusLine}\r\n\r\n{_body}";
     }
 
     public class Builder
@@ -27,6 +29,7 @@ public class HttpRequest
         private string? _uri;
         private string? _protocolVersion;
         private string? _queryString;
+        private string? _body;
 
         public Builder WithMethod(string method)
         {
@@ -54,13 +57,19 @@ public class HttpRequest
             _queryString = queryString;
             return this;
         }
+        
+        public Builder WithBody(string  body)
+        {
+            _body = body;
+            return this;
+        }
 
         public HttpRequest Build()
         {
             ArgumentNullException.ThrowIfNull(_method);
             ArgumentNullException.ThrowIfNull(_uri);
             ArgumentNullException.ThrowIfNull(_protocolVersion);
-            return new HttpRequest(_method, _uri, _protocolVersion, _queryString);
+            return new HttpRequest(_method, _uri, _protocolVersion, _queryString, _body);
         }
     }
 }
