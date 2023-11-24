@@ -7,12 +7,12 @@ public class HttpRequest
     private readonly string _protocolVersion;
     private readonly string? _queryString;
 
-    private HttpRequest(Builder builder)
+    private HttpRequest(string method, string uri, string protocolVersion, string? queryString)
     {
-        _method = builder.Method;
-        _uri = builder.Uri;
-        _protocolVersion = builder.ProtocolVersion;
-        _queryString = builder.QueryString;
+        _method = method;
+        _uri = uri;
+        _protocolVersion = protocolVersion;
+        _queryString = queryString;
     }
 
     public override string ToString()
@@ -23,26 +23,44 @@ public class HttpRequest
 
     public class Builder
     {
-        // required
-        protected internal string Method { get; private set; }
-        protected internal string Uri { get; private set; }
-        protected internal string ProtocolVersion { get; private set; }
-        // optional
-        protected internal string? QueryString { get; private set; }
+        private string? _method;
+        private string? _uri;
+        private string? _protocolVersion;
+        private string? _queryString;
 
-        public Builder(string method, string uri, string protocolVersion = "1.1")
+        public Builder WithMethod(string method)
         {
-            Method = method;
-            Uri = uri;
-            ProtocolVersion = protocolVersion;
+            ArgumentNullException.ThrowIfNull(method);
+            _method = method;
+            return this;
+        }
+
+        public Builder WithUri(string uri)
+        {
+            ArgumentNullException.ThrowIfNull(uri);
+            _uri = uri;
+            return this;
+        }
+
+        public Builder WithProtocolVersion(string protocolVersion)
+        {
+            ArgumentNullException.ThrowIfNull(protocolVersion);
+            _protocolVersion = protocolVersion;
+            return this;
         }
 
         public Builder WithQueryString(string queryString)
         {
-            QueryString = queryString;
+            _queryString = queryString;
             return this;
         }
 
-        public HttpRequest Build() => new HttpRequest(this);
+        public HttpRequest Build()
+        {
+            ArgumentNullException.ThrowIfNull(_method);
+            ArgumentNullException.ThrowIfNull(_uri);
+            ArgumentNullException.ThrowIfNull(_protocolVersion);
+            return new HttpRequest(_method, _uri, _protocolVersion, _queryString);
+        }
     }
 }
