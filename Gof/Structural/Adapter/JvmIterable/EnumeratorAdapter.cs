@@ -12,10 +12,7 @@ public class EnumeratorAdapter<T> : Iterator<T>
 
     public bool HasNext()
     {
-        if (_flag is null)
-        {
-            _flag = _enumerator.MoveNext();
-        }
+        _flag ??= _enumerator.MoveNext();
         return _flag.Value;
     }
 

@@ -5,7 +5,7 @@ namespace Gof.Structural.Adapter.JvmIterable;
 public class IteratorAdapter<T> : IEnumerator<T>
 {
     private readonly Iterator<T> _iterator;
-    private T _value = default;
+    private T _value = default!;
 
     public IteratorAdapter(Iterator<T> iterator)
     {
@@ -14,7 +14,7 @@ public class IteratorAdapter<T> : IEnumerator<T>
 
     public T Current => _value;
 
-    object IEnumerator.Current => Current;
+    object IEnumerator.Current => Current!;
 
     public bool MoveNext()
     {

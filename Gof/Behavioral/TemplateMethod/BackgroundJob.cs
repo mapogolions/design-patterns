@@ -22,11 +22,11 @@ public abstract class BackgroundJob : IDisposable
         if (_executingTask is null) return;
         try
         {
-            _cts?.Cancel();
+            await _cts?.CancelAsync();
         }
         finally
         {
-            await Task.WhenAny(_executingTask, Task.Delay(Timeout.InfiniteTimeSpan));
+            await Task.WhenAny(_executingTask, Task.Delay(Timeout.InfiniteTimeSpan, token));
         }
     }
 
