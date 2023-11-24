@@ -20,8 +20,8 @@ public partial class Generator<T>
     public void Resume() => _currentState.Resume();
     public T Yield => _currentState.Yield(_items);
 
-    private GeneratorState _currentState { get; set; }
-    private SuspendedState _suspendedState { get; }
-    private ResumedState _resumedState { get; }
-    private ExhaustedState _exhaustedState { get; }
+    private GeneratorState _currentState;
+    private readonly SuspendedState _suspendedState;
+    private readonly ResumedState _resumedState;
+    private readonly ExhaustedState _exhaustedState;
 }
