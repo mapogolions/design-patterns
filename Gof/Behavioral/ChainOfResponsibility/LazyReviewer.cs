@@ -1,8 +1,13 @@
 namespace Gof.Behavioral.ChainOfResponsibility;
 
-public class LazyReviewer(int affectedLines) : Reviewer
+public class LazyReviewer : Reviewer
 {
-    private readonly int _affectedLines = affectedLines;
+    private readonly int _affectedLines;
+
+    public LazyReviewer(int affectedLines)
+    {
+        _affectedLines = affectedLines;
+    }
 
     public override ReviewResult Review(PullRequest pullRequest)
     {

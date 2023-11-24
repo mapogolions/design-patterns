@@ -42,7 +42,7 @@ public class CurrencyPair : IObservable<CurrencyPair>, IDisposable
 
 internal class NullDisposable : IDisposable
 {
-    public static NullDisposable Singleton { get; } = new NullDisposable();
+    public static NullDisposable Singleton { get; } = new();
 
     private NullDisposable()
     {

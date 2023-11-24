@@ -1,6 +1,6 @@
 namespace Gof.Behavioral.Observer.RecursiveType;
 
-public interface IObserver<T> where T : IObservable<T>
+public interface IObserver<in T> where T : IObservable<T>
 {
     void Update(T subject);
 }

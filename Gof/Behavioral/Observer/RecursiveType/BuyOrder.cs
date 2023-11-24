@@ -1,8 +1,13 @@
 namespace Gof.Behavioral.Observer.RecursiveType;
 
-public class BuyOrder(decimal resistanceLevel) : IObserver<CurrencyPair>
+public class BuyOrder : IObserver<CurrencyPair>
 {
-    private readonly decimal _resistanceLevel = resistanceLevel;
+    private readonly decimal _resistanceLevel;
+
+    public BuyOrder(decimal resistanceLevel)
+    {
+        _resistanceLevel = resistanceLevel;
+    }
 
     public bool CanBuy { get; private set; }
 

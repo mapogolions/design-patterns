@@ -1,8 +1,13 @@
 namespace Gof.Behavioral.TemplateMethod;
 
-public class TakeTimeJob(TimeSpan takeTime) : BackgroundJob
+public class TakeTimeJob : BackgroundJob
 {
-    private readonly TimeSpan _takeTime = takeTime;
+    private readonly TimeSpan _takeTime;
+
+    public TakeTimeJob(TimeSpan takeTime)
+    {
+        _takeTime = takeTime;
+    }
 
     protected override async Task ExecuteAsync(CancellationToken token = default)
     {
@@ -23,8 +28,12 @@ public class CompletedAtStartTimeJob : BackgroundJob
     }
 }
 
-public class NonCancellableJob(TimeSpan takeTime) : TakeTimeJob(takeTime)
+public class NonCancellableJob : TakeTimeJob
 {
+    public NonCancellableJob(TimeSpan takeTime) : base(takeTime)
+    {
+    }
+
     protected override Task ExecuteAsync(CancellationToken token = default)
     {
         return base.ExecuteAsync(default);

@@ -1,8 +1,13 @@
 namespace Gof.Behavioral.ChainOfResponsibility;
 
-public class PedantReviewer(decimal testCoverage) : Reviewer
+public class PedantReviewer : Reviewer
 {
-    private readonly decimal _testCoverage = testCoverage;
+    private readonly decimal _testCoverage;
+
+    public PedantReviewer(decimal testCoverage)
+    {
+        _testCoverage = testCoverage;
+    }
 
     public override ReviewResult Review(PullRequest pullRequest)
     {

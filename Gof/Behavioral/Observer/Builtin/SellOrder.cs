@@ -1,8 +1,13 @@
 namespace Gof.Behavioral.Observer.Builtin;
 
-public class SellOrder(decimal level) : IObserver<CurrencyPair>
+public class SellOrder : IObserver<CurrencyPair>
 {
-    private readonly decimal _level = level;
+    private readonly decimal _level;
+
+    public SellOrder(decimal level)
+    {
+        _level = level;
+    }
 
     public bool CanSell { get; private set; }
 

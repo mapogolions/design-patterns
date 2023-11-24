@@ -7,6 +7,8 @@ internal class FulfilledPromiseState<T> : IPromiseState<T>
     internal FulfilledPromiseState(Promise<T> promise) => _promise = promise;
 
     // A Promise can only be settled once and then stays settled
-    public Promise<T> Resolve(T value) => _promise;
-    public Promise<T> Reject(string error) => _promise;
+    public Promise<T> Resolve(T value) => 
+        throw new InvalidOperationException($"Promise fulfilled. Promise({_promise.Result})");
+    public Promise<T> Reject(Exception failure) =>
+        throw new InvalidOperationException($"Promise fulfilled. Promise({_promise.Result})");
 }

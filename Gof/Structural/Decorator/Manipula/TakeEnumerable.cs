@@ -1,9 +1,15 @@
 namespace Gof.Structural.Decorator.Manipula;
 
-public class TakeEnumerable<T>(IEnumerable<T> origin, int count) : BaseEnumerable<T>
+public class TakeEnumerable<T> : BaseEnumerable<T>
 {
-    private readonly IEnumerable<T> _origin = origin;
-    private readonly int _count = count;
+    private readonly IEnumerable<T> _origin;
+    private readonly int _count;
+
+    public TakeEnumerable(IEnumerable<T> origin, int count)
+    {
+        _origin = origin;
+        _count = count;
+    }
 
     public override IEnumerator<T> GetEnumerator()
     {

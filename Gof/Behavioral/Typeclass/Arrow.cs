@@ -1,8 +1,15 @@
 namespace Gof.Behavioral.Typeclass;
 
-public class Arrow(string name, string domain, string codomain) : AstNode
+public class Arrow : AstNode
 {
-    public string Name { get; } = name;
-    public string Domain { get; } = domain;
-    public string Codomain { get; } = codomain;
+    public Arrow(string name, string domain, string codomain)
+    {
+        Name = name;
+        Domain = domain;
+        Codomain = codomain;
+    }
+
+    public string Name { get; }
+    public string Domain { get; }
+    public string Codomain { get; }
 }

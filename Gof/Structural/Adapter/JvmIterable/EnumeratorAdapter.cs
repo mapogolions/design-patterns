@@ -1,9 +1,14 @@
 namespace Gof.Structural.Adapter.JvmIterable;
 
-public class EnumeratorAdapter<T>(IEnumerator<T> enumerator) : Iterator<T>
+public class EnumeratorAdapter<T> : Iterator<T>
 {
     private bool? _flag = null;
-    private readonly IEnumerator<T> _enumerator = enumerator;
+    private readonly IEnumerator<T> _enumerator;
+
+    public EnumeratorAdapter(IEnumerator<T> enumerator)
+    {
+        _enumerator = enumerator;
+    }
 
     public bool HasNext()
     {

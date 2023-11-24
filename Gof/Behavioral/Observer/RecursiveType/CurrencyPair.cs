@@ -3,7 +3,7 @@ namespace Gof.Behavioral.Observer.RecursiveType;
 
 public class CurrencyPair : IObservable<CurrencyPair>
 {
-    private readonly List<IObserver<CurrencyPair>> _orders = [];
+    private readonly List<IObserver<CurrencyPair>> _orders = new();
     private decimal _currentRate;
 
     public CurrencyPair(string name, decimal currentRate)

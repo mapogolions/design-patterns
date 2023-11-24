@@ -1,10 +1,17 @@
 namespace Gof.Behavioral.ChainOfResponsibility;
 
-public class PullRequest(int affectedLines, decimal testCoverage, bool testsPassed)
+public class PullRequest
 {
-    public int AffectedLines { get; } = affectedLines;
+    public PullRequest(int affectedLines, decimal testCoverage, bool testsPassed)
+    {
+        AffectedLines = affectedLines;
+        TestCoverage = testCoverage;
+        UnitTestsPassed = testsPassed;
+    }
 
-    public decimal TestCoverage { get; } = testCoverage;
+    public int AffectedLines { get; }
 
-    public bool UnitTestsPassed { get; } = testsPassed;
+    public decimal TestCoverage { get; }
+
+    public bool UnitTestsPassed { get; }
 }

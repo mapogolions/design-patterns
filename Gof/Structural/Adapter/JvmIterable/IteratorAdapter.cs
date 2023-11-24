@@ -2,10 +2,15 @@ using System.Collections;
 
 namespace Gof.Structural.Adapter.JvmIterable;
 
-public class IteratorAdapter<T>(Iterator<T> iterator) : IEnumerator<T>
+public class IteratorAdapter<T> : IEnumerator<T>
 {
-    private readonly Iterator<T> _iterator = iterator;
+    private readonly Iterator<T> _iterator;
     private T _value = default;
+
+    public IteratorAdapter(Iterator<T> iterator)
+    {
+        _iterator = iterator;
+    }
 
     public T Current => _value;
 
