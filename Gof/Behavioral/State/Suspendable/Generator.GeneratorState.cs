@@ -8,6 +8,7 @@ public partial class Generator<T>
 
         protected GeneratorState(Generator<T> generator)
         {
+            ArgumentNullException.ThrowIfNull(generator);
             Generator = generator;
         }
 

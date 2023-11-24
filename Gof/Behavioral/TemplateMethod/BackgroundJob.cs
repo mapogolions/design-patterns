@@ -22,7 +22,7 @@ public abstract class BackgroundJob : IDisposable
         if (_executingTask is null) return;
         try
         {
-            await _cts?.CancelAsync();
+            await _cts!.CancelAsync();
         }
         finally
         {

@@ -12,7 +12,7 @@ public class IteratorAdapter<T> : IEnumerator<T>
         _iterator = iterator;
     }
 
-    public T Current => _value;
+    public T Current => _value!;
 
     object IEnumerator.Current => Current!;
 

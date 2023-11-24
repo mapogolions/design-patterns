@@ -1,41 +1,40 @@
-namespace Gof.Creational.Builder.Http;
+namespace Gof.Creational.Builder;
 
-public class HttpRequest : HttpMessage
+public class HttpRequest
 {
-    // required
     private readonly string _method;
     private readonly string _uri;
-    // optional
-    private readonly string _queryString;
+    private readonly string _protocolVersion;
+    private readonly string? _queryString;
 
-    private HttpRequest(Builder builder) : base(builder)
+    private HttpRequest(Builder builder)
     {
         _method = builder.Method;
         _uri = builder.Uri;
+        _protocolVersion = builder.ProtocolVersion;
         _queryString = builder.QueryString;
     }
 
     public override string ToString()
     {
         var statusLine = $"{_method} {_uri}{_queryString} HTTP/{_protocolVersion}";
-        return $"{statusLine}\r\n{base.ToString()}";
+        return $"{statusLine}\r\n\r\n";
     }
 
-    public class Builder : MessageBuilder
+    public class Builder
     {
         // required
         protected internal string Method { get; private set; }
         protected internal string Uri { get; private set; }
+        protected internal string ProtocolVersion { get; private set; }
         // optional
-        protected internal string QueryString { get; private set; }
+        protected internal string? QueryString { get; private set; }
 
-        public Builder(string method, string uri) : this(method, uri, "1.1") {}
-
-        public Builder(string method, string uri, string protocolVersion) : base(protocolVersion)
+        public Builder(string method, string uri, string protocolVersion = "1.1")
         {
             Method = method;
             Uri = uri;
-            QueryString = default;
+            ProtocolVersion = protocolVersion;
         }
 
         public Builder WithQueryString(string queryString)
@@ -44,6 +43,6 @@ public class HttpRequest : HttpMessage
             return this;
         }
 
-        public override HttpMessage Build() => new HttpRequest(this);
+        public HttpRequest Build() => new HttpRequest(this);
     }
 }

@@ -1,6 +1,6 @@
-using Gof.Creational.Builder.Http;
+using Gof.Creational.Builder;
 
-namespace Gof.Tests.Creational.Builder.Http;
+namespace Gof.Tests.Creational.Builder;
 
 public class HierarchicalHttpRequestTests
 {
