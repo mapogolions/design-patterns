@@ -26,7 +26,7 @@ namespace Gof.Behavioral.State.CircuitBreaker
 
             public void Success()
             {
-                _circuitBreaker.ResetConsecutiveFailures();
+                _circuitBreaker._consecutiveFailures = 0;
             }
         }
     }

@@ -16,7 +16,11 @@ namespace Gof.Behavioral.State.CircuitBreaker
             {
                 get
                 {
-                    _circuitBreaker._state = _circuitBreaker._halfOpenState;
+                    if (_circuitBreaker._breakTill <= _circuitBreaker._clock.UtcNow)
+                    {
+                        _circuitBreaker.HalfOpen();
+                        return false;
+                    }
                     return true;
                 }
             }

@@ -8,7 +8,7 @@
         private DateTime _breakTill = DateTime.MinValue;
         private readonly int _threshold;
         private readonly TimeSpan _breakDuration;
-        private readonly TimeProvider _timeProvider;
+        private readonly ISystemClock _clock;
         private int _consecutiveFailures;
 
         private ICircuitState _state;
@@ -16,11 +16,11 @@
         private readonly ICircuitState _openState;
         private readonly ICircuitState _halfOpenState;
 
-        public CircuitBreaker(int threshold, TimeSpan breakDuration, TimeProvider timeProvider)
+        public CircuitBreaker(int threshold, TimeSpan breakDuration, ISystemClock clock)
         {
             _threshold = threshold;
             _breakDuration = breakDuration;
-            _timeProvider = timeProvider;
+            _clock = clock;
             _closedState = new CircuitClosedState(this);
             _openState = new CircuitOpenState(this);
             _halfOpenState = new CircuitHalfOpenState(this);
@@ -57,7 +57,7 @@
 
         private void SetBreakTill()
         {
-            _breakTill = _timeProvider.GetUtcNow().Date.Add(_breakDuration);
+            _breakTill = _clock.UtcNow.Add(_breakDuration);
         }
 
         private void Set(T result, Exception error)
@@ -70,11 +70,9 @@
         {
             _lastError = null;
             _lastResult = default;
-            _state = _closedState;
             _breakTill = DateTime.MinValue;
+            this.Close();
         }
-
-        private void ResetConsecutiveFailures() => _consecutiveFailures = 0;
 
         private void Open() => _state = _openState;
         private void Close() => _state = _closedState;
