@@ -1,8 +1,8 @@
 using Gof.Behavioral.State.Promise;
 
-namespace Gof.Tests.Behavioral;
+namespace Gof.Tests.Behavioral.State;
 
-public class StatePromiseTests
+public class PromiseTests
 {
     [Fact]
     public void PromiseCanOnlyBeFulfilledOnce()

@@ -1,8 +1,8 @@
 using Gof.Behavioral.State.Suspendable;
 
-namespace Gof.Tests.Behavioral;
+namespace Gof.Tests.Behavioral.State;
 
-public class StateSuspendableTests
+public class SuspendableTests
 {
     [Fact]
     public void ShouldThrowIndexOutOfRangeExceptionWhenGeneratorIsExhausted()
